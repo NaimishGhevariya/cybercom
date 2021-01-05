@@ -1,0 +1,27 @@
+- learnt about creating repository
+- learnt how to generate ssh key form local machine and added it to my github.
+- cloned created repo to the local machine through git bash using ssh repo link.
+- fetched latest updates done in current repo via "$git fetch origin" command.
+- created new branch from origin/main by "$git checkout -b cybercom-creation origin/main"
+- checked the status of mdified files via "$git status"
+- added index.pho to the new branch by "$git add index.php"
+- commited all the changes and pushed it to the github.
+- learnt how to switch between the branches by checkout.
+- after fetching origin repo. the branch cybercom-creation is merged to cybercom and pushed the changes to github.
+- used git diff to check modification done in file.
+* read the official documentation from the git.
+* read what versioning control system is and understood in depth.
+* got the clear difference between modified, not modified, staged, unstaged, tracked, unstracked files.
+* learnt about how locat versioning control work, what are pros and cons of it.
+* learnt how centralized version control system is usefull to overcomes issues of LVC.
+* Though it also have cons of its own like single point failure and improper backup or currupt hdd in server can lead to a big loss. 
+* understood in depth that hoe git works as a distibuted versioning contorl system and how it overcome the cons of previous versioning control systems,
+* practiced some of the basic commands and understood their functioning,
+* git int - for converting local dir to v.c. directiory.
+* git add is used for start versioning file, to stage files, and marking merge conflicted files as resolved.
+* used short sttus flags -s and --short and understood the markings that is given in output.
+	?? - files not tracked
+	A  - added to staging area(file is added to repo but not commited yet)
+	M  - file moidified
+	MM - file modified, staged and moified again (in status it will give output as the file is staged and unstaged.)
+* knew how gitignore works and how the patterns works in it.
