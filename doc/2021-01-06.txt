@@ -1,0 +1,10 @@
+- did revision of the yesterday's work and revise all codes.
+- tried git log command and performed with several flags like --graph and understood the repo structure with several permutation combinations of repos, branches, files.
+- tried different ways for executing codes with different scenarios like creating several branch and merging them into the another branch.
+- tried nested branchig and understood the complex structure of it.
+- learnt how to create branches from main or another branches and navigate through.
+- learnt how file merge happen when we modify one brached file and apply the changes to the [arent branch.
+- understood the HEAD pointer and working of it.
+- undersrtood how to manipulate HEAD pointer value with different ways.
+- learnt how to reset previous commits by commit id, head and git reset HEAD~<no.> 
+- tried some solutions and practicethem from stack overflow and other online resources.-
