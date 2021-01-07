@@ -1,0 +1,9 @@
+- created different repos and practiced add, push, branch, commit commands.
+- recalled the extra commands and repplied those and practiced them.
+- learnt about squish command and read about it.
+- tried to solve some errors that were generated during practice.
+- read some stackoverflow and git solutions and tried to apply and solve queries.
+- tried some hard, soft, f flags on different commands.
+- tried to solve some merge conflicts.
+- solved ahead commit problems and cleared the tree.
+- learnt to rebase , fetch and pulling operations on repositories.
