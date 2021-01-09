@@ -1,0 +1,164 @@
+.container {
+  width: 70%;
+  margin: 0 15%;
+}
+
+.title-holder {
+  position: relative;
+  margin-top: 2em;
+}
+
+.title {
+  text-align: center;
+  font-size: 3em;
+  margin-bottom: 0;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: darkslategrey;
+}
+
+.title-bg {
+  position: absolute;
+  top: 0;
+  font-size: 10em;
+  line-height: 0;
+  color: rgba(211, 211, 211, 0.2);
+  text-align: center;
+  z-index: -1000;
+  user-select: none;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.card-holder {
+  display: flex;
+  width: 100%;
+  padding: 1.5em 0;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.card {
+  width: 215px;
+  margin: 0 1em;
+  overflow: hidden;
+  background-color: whitesmoke;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+}
+.card:hover {
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+}
+
+.img-holder {
+  width: 215px;
+  height: 315px;
+  margin-bottom: 1em;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: grey;
+  position: relative;
+}
+
+.tag {
+  position: absolute;
+  bottom: 7px;
+  left: 7px;
+  border-radius: 12px;
+  padding: 0.5rem;
+  font-size: 0.75em;
+  text-align: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: bold;
+  color: white;
+}
+
+.new {
+  background-color: hsl(203, 92%, 75%);
+  box-shadow: 0px 0px 25px hsl(203, 92%, 75%);
+}
+.bestseller {
+  background-color: hsl(20, 92%, 75%);
+  box-shadow: 0px 0px 25px hsl(20, 92%, 75%);
+}
+
+.img {
+  max-width: 100%;
+}
+
+.caption {
+  text-align: center;
+  color: darkslategrey;
+  padding: 0 0.5%;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.bottom-text {
+  text-align: center;
+  color: gray;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  border-bottom: 2px solid lightgrey;
+  padding: 1em;
+  font-size: 1.5em;
+  line-height: 1.5em;
+}
+
+/************************************************************************/
+/************************************************************************/
+/************************************************************************/
+/************************************************************************/
+/************************************************************************/
+table,
+td {
+  color: black;
+  table-layout: auto;
+  border: 1px solid black;
+  text-align: center;
+  margin: auto;
+}
+
+thead,
+tfoot td:first-child {
+  font-weight: bold;
+}
+.complex,
+.complex tr td {
+  border-collapse: collapse;
+  border: 5px solid black;
+}
+
+table {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.complex tr td {
+  padding: 10px;
+  width: 20px;
+  height: 10px;
+}
+/************************************************************************/
+/************************************************************************/
+/************************************************************************/
+/************************************************************************/
+/************************************************************************/
+.table2 {
+  width: 70%;
+  border: 2px solid gainsboro;
+}
+
+.table2 tr td {
+  border: 2px solid grey;
+}
+.table2 tbody tr:first-child {
+  height: 3em;
+  vertical-align: text-top;
+}
+.table2 thead tr td:first-child {
+  width: 60%;
+}
+.table2 thead tr td:nth-child(2) {
+  width: 15%;
+}
+.table2 thead tr td:last-child() {
+  width: 25%;
+}
