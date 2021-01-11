@@ -1,0 +1,137 @@
+h1 {
+  text-align: center;
+  color: rgb(35, 39, 39);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.subtext {
+  text-align: center;
+  width: 40%;
+  margin: auto;
+  color: gray;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.card-holder {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  flex-wrap: wrap;
+}
+
+.card {
+  padding: 1em 1.2em;
+  width: 22%;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.25),
+    0px 0px 5px rgba(128, 128, 128, 0.35);
+  border-radius: 5px;
+  margin: 1.5%;
+}
+
+.img-holder {
+  width: 5em;
+  height: 5em;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 1em auto;
+}
+
+.img-holder img {
+  width: 100%;
+}
+
+.testimony {
+  margin: auto;
+  padding: 0.1em;
+  color: rgba(87, 87, 87, 0.87);
+  line-height: 1.5em;
+  border-bottom: 2px solid lightgray;
+  font-size: 14px;
+}
+.attestant-info {
+  padding: 1em 0 0.5em;
+}
+
+.attestant-info p {
+  padding: 0.5em 0;
+  margin: 0;
+  line-height: 0.5em;
+  color: rgb(45, 51, 51);
+}
+
+.attestant-info p:last-child {
+  color: grey;
+  font-size: 0.8em;
+}
+
+@media (max-width: 950px) {
+  .card {
+    width: 30%;
+  }
+  .card-holder {
+    width: 100%;
+    padding: 1em 0;
+    margin-top: 1em;
+  }
+
+  .subtext {
+    width: 50%;
+  }
+}
+
+@media (max-width: 400px) {
+  .card {
+    width: 80%;
+  }
+  .card-holder {
+    width: 100%;
+    padding: 1em 0;
+    margin-top: 1em;
+  }
+
+  .subtext {
+    width: 80%;
+  }
+  .img-holder {
+    margin: 0.5em auto;
+  }
+}
+/*********************************************************************
+**********************************************************************
+*****************************table css********************************
+**********************************************************************
+*********************************************************************/
+
+table {
+  margin: 3em auto;
+  border: 1px sloid black;
+  text-align: center;
+  font-family: unset;
+}
+
+td {
+  padding: 0.5em;
+}
+table,
+tr,
+td {
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+
+.inner-table {
+  margin: 0;
+}
+
+.inner-table,
+.inner-table tr,
+.inner-table tr td {
+  border: 2px solid black;
+  border-collapse: separate;
+}
