@@ -1,0 +1,118 @@
+#mytable thead {
+  font-weight: bold;
+  text-align: center;
+}
+#mytable {
+  border: 1px solid black;
+}
+#mytable tr td {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+img {
+  width: 150px;
+  height: 150px;
+}
+
+.studentrecords {
+  width: 40%;
+  margin: auto;
+}
+
+/*********************************************************************
+********************** Stem Cell Comapnies table**********************
+*********************************************************************/
+.stemcell-comp {
+  width: 80%;
+  margin: auto;
+}
+.stemcell-comp div {
+  width: 60%;
+  margin: auto;
+  margin-top: 5em;
+}
+h3 {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.companyHolder {
+  border: 1px solid black;
+  width: 60%;
+  margin: auto;
+  border-collapse: collapse;
+  padding: 5px;
+}
+.companyHolder thead td {
+  font-weight: bold;
+  background-color: lightgreen;
+}
+.companyHolder td {
+  border: 1px solid black;
+  padding: 5px;
+  width: 25%;
+  vertical-align: top;
+}
+
+.companyHolder tbody td:first-child {
+  background-color: lightblue;
+  font-weight: bold;
+}
+
+.companyHolder tbody td:nth-child(2) {
+  background-color: lightyellow;
+}
+
+.companyHolder tbody td:nth-child(3) {
+  background-color: lightpink;
+}
+
+.companyHolder tbody td:last-child {
+  background-color: rgb(255, 255, 75);
+}
+
+.companyHolder tr::before,
+.companyHolder tr::after {
+  content: '@';
+  display: block;
+  font-size: 1px;
+  color: transparent;
+}
+.companyHolder tbody::before {
+  content: '-';
+  display: block;
+  font-size: 2px;
+  color: transparent;
+}
+
+.spanning td {
+  border-bottom: 1px solid transparent;
+}
+
+tbody .spanning td:first-child {
+  border-bottom: 1px solid black;
+}
+
+.spanned td {
+  border-top: 1px solid transparent;
+  padding: 5px;
+  width: 25%;
+  vertical-align: top;
+}
+
+tbody .spanned td:first-child {
+  background-color: lightyellow;
+  font-weight: normal;
+}
+
+tbody .spanned td:nth-child(2) {
+  background-color: lightpink;
+}
+
+tbody .spanned td:last-child {
+  background-color: rgb(255, 255, 75);
+}
+
+ul {
+  padding: 0 20px;
+}

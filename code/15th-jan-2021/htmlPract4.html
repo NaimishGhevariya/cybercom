@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html practice 4</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    
+<!--********************************************************************
+*************************** html challenge 4 ***************************
+*********************************************************************-->
+    
+<div class="studentrecords">
+    <h1>Student Records</h1>
+    <table id="mytable">
+        <thead>
+            <tr>
+                <td>No.</td>
+                <td>Image</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Age</td>
+                <td>Hobby</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td><img src="img1.jpg" alt="jhon image"></td>
+                <td>Jhon</td>
+                <td>Frost</td>
+                <td>25</td>
+                <td><a href="#">Swimming</a></td>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td><img src="img2.jpg" alt="Anna image"></td>
+                <td>Anna</td>
+                <td>Bayo</td>
+                <td>23</td>
+                <td><a href="#">Cooking</a></td>
+            </tr>
+
+            <tr>
+                <td>3</td>
+                <td><img src="img3.jpg" alt="James image"></td>
+                <td>James</td>
+                <td>Lartey</td>
+                <td>22</td>
+                <td><a href="#">Rapping</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+
+
+
+<!--********************************************************************
+*************************** html challenge 5 ***************************
+*********************************************************************-->
+
+
+<div class="stemcell-comp">
+    <div>
+        <h3>Table1. Stem Cell Comapnies Active in Opthamology</h3>
+    </div>
+    
+    <table class="companyHolder">
+        <thead> 
+            <tr>
+                <td>Company</td>
+                <td>Collaborator(s)</td>
+                <td>Cell type</td>
+                <td>Applications</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Advanced Cell Technology Inc. (ACT)</td>
+                <td>
+                    Oragon Health & Science Univerdity (OHSU)
+                    <ul>
+                        <li>Moorefields Eye Hosp.</li>
+                        <li>ULCA/Jules Stein</li>
+                        <li>WIlls Eye Hospital</li>
+                        <li>Aberdeen Royal Infirm.</li>
+                        <li>BAscom Palmer</li>
+                    </ul>
+                </td>
+                <td>hESCs</td>
+                <td>RPE cells for retinal diseases,
+                     including Dry AMD <a href="#">NCT01344993</a> 
+                     and Stargardt's <a href="#">NCT01344993</a> 
+                     <a href="#">NCT01344993</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td>AstraZeneca</td>
+                <td>
+                    Univ. College London(UCL)
+                </td>
+                <td>hESCs</td>
+                <td>Diabetic Retinopathy</td>
+            </tr>
+
+            <tr>
+                <td>Centecor/J&Jw/iScience Interventional</td>
+                <td>
+                   
+                    <ul>
+                        <li>Retina ionstitute of CA</li>
+                        <li>Wills Eye Hospital</li>
+                    </ul>
+                </td>
+                <td>Adult SCs (CNTO2746 from umbilical cord fluid.</td>
+                <td>RPE cells for GA,
+                     atrophic Dry AMD <a href="#">NCT01226628</a> 
+                </td>
+            </tr>
+
+            <tr>
+                <td>Cell Care Neurosciences</td>
+                <td>
+                    TEVA
+                </td>
+                <td>hESCs</td>
+                <td>RPE cells for dry AMD</td>
+            </tr>
+
+            <tr>
+                <td>Cellseed France SARL</td>
+                <td>
+                   FGK CLinical Research GmbH
+                    <ul>
+                        <li>Universitatsklinkum Erlangen, Germany</li>
+                    </ul>
+                </td>
+                <td>oral mucosa epithelial cells</td>
+                <td>CAOMECS* for Cornial tissue Repair
+                     in those with limbal cell deficiencies <a href="#">NCT01489501</a> 
+                </td>
+            </tr>
+
+            <tr>
+                <td>Fundacion Clinic per a la Recerca Biomedica (Spain) </td>
+                <td>
+                   FGK CLinical Research GmbH
+                    <ul>
+                        <li>Hospital CLinic Barcelona</li>
+                        <li>Instituto Univ. Baraqquer</li>
+                        <li>Instituto de Microcirugia Ocular</li>
+                    </ul>
+                </td>
+                <td>celerocomeal progenitor cells from the limbus</td>
+                <td>Replacement of damaged cornial cells<a href="#">NCT01470573</a> 
+                </td>
+            </tr>
+
+            <tr>
+                <td>General HOsp of the Chinese People's Armed Police Force (China)
+                </td>
+                <td> </td>
+                <td>unknown</td>
+                <td>Opric Nerve Atrophy<a href="#">ChiCTR-TNRC-11001491</a>
+                </td>
+            </tr>
+
+
+            <tr class="spanning">
+                <td rowspan="2">International Stem Cell Corp. (ISCO)</td>
+                <td>
+                    CytoCor-
+                    <ul>
+                        <li>Absorption System - US</li>
+                        <li>Sankara Nethralaya - India</li>
+                        <li>Automation Partnership - UK</li>
+                    </ul>
+                </td>
+                <td>hpSCs</td>
+                <td>Cornial tissue for transplantation into degenerated corneas</td>
+            </tr>
+            <tr class="spanned">
+                <td>CytoRet -UC Irvin</td>
+                <td>hpSCs</td>
+                <td>RPE cells and layered retinal structures for AMD</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+<hr>
+
+<!--********************************************************************
+************************** coding challenge 5 **************************
+*********************************************************************-->
+
+<h1>coding challenge 5</h1>
+<h2><span class="hoverwel">Welcome!!!</span></h2>
+<script src="challenge6.js"></script>
+<hr>
+
+
+<!--********************************************************************
+************************** coding challenge 6 **************************
+*********************************************************************-->
+
+<h1>coding challenge 6</h1>
+<p>fibonacci series...in console.</p>
+<script src="fibonacci.js"></script>
+
+</div>
+</body>
+
+</html>
