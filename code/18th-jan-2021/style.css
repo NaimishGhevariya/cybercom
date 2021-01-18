@@ -1,0 +1,22 @@
+.container {
+  width: 60%;
+  margin: auto;
+}
+fieldset div {
+  width: 100%;
+  margin: 2%;
+}
+label {
+  width: 30%;
+  display: inline-block;
+}
+
+input[type='submit'],
+input[type='reset'] {
+  padding: 1%;
+  width: 10%;
+  margin: 2% calc(5% - 4px) 2% 35%;
+}
+input[type='reset'] {
+  margin: 2% calc(35% - 4px) 2% 5%;
+}

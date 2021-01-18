@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <form action="" name= "addressForm" method="POST">
+            <fieldset>
+               <legend>Your address</legend>    
+               <div> 
+                    <label for="firstName">First Name</label>
+                    <input type="text" name="firstName">
+                </div>
+               <div> 
+                    <label for="lastName">Last Name</label>
+                    <input type="text" name="lastName">
+                </div>
+               <div> 
+                     <label for="streetName">Street Name</label>
+                    <input type="text" name="streetName">
+                </div>
+               <div> 
+                    <label for="cityName">City Name</label>
+                    <input type="text" name="cityName">
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Additional details</legend>
+                <div>
+                    <label for="biography">Biography</label>
+                    <textarea name="biography" id="" cols="30" rows="3"></textarea>
+                </div>
+                <div>
+                    <label for="image">Image</label>
+                    <input type="file">
+                </div>
+                <div>
+                    <label for="agegroup">Age Group</label>
+                    <select name="agegroup">
+                        <option value="0to9years">0 to 9 Years</option>
+                        <option value="10to18years">10 to 18 Years</option>
+                        <option value="19to45years" selected>19 to 45 Years</option>
+                        <option value="45above">45 Above</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Interests</legend>
+                <div>
+                    <label for="hobbies">Hobbies</label>
+                    <select  name="hobbies" size="4">
+                        <option value="paying soccer">Playing soccer</option>
+                        <option value="dancing">Dancing</option>
+                        <option value="gardening">GArdening</option>
+                        <option value="watching movies">Watching movies</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="favcar">Favourite car?</label>
+                    <select name="favcar">
+                        <option value="volvo">Volvo</option>
+                        <option value="bmw">B M W</option>
+                        <option value="audi" selected>Audi</option>
+                        <option value="ferrari">Ferrari</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="transport">Favourite public transport?</label>
+                    <select name="transport" size="4">
+                        <optgroup label="Ground">
+                        <option value="train">Train</option>
+                        <option value="bus">Bus</option>
+                        </optgroup>
+                        <optgroup label="Water">
+                        <option value="boat">Boat</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </fieldset>
+
+            <input type="submit" value="Submit" formtarget="success.html" onclick="redirect()">
+            <input type="reset" value="Reset">
+
+        </form>
+
+    </div>
+</body>
+</html>
+
+
+<!-- script for redirecting to next page -->
+<script>
+    function redirect() {
+      location.replace("success.html")
+    }
+</script>
