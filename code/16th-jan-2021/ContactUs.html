@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us form</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="display.js"></script>
+</head>
+<body>
+
+    <div class="contactInfo">
+        <div class="headerbanner">
+            <span class="bg"></span>
+            <h1>CONTACT US</h1> 
+        </div>
+        <div class="form">
+            <form action="">
+                <div class="nameholder" >
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <input type="text" class="name" placeholder="Full name" required>
+                </div>
+        
+                <div class="emailholder">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    <input type="email" class="email" placeholder="Eg. example@email.com" required>
+                  
+                </div>
+
+                <div class="mobilenoholder">
+                    <i class="fa fa-mobile" aria-hidden="true"></i>
+                    <input type="number" class="mobileno" placeholder="Eg.+1 800 000000"  min="1000000000" max="9999999999" required>
+         
+                </div>
+
+                <div class="comments">
+                    <i class="fas fa-comment "></i>
+                    <textarea name="comments" id="comments" cols="30" rows="10" placeholder="Your comments..."></textarea>
+                </div>
+
+                <input type="submit" value="SEND NOW" class="submitbtn" onclick="display()">
+                
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>
