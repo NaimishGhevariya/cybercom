@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html challenge 8</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <form action="Information.php" method="POST">
+            <fieldset>
+                <legend> Personal Information</legend>
+                <div>
+                    <label for="firstname">First Name:</label>
+                    <div class="subdiv">
+                        <input type="text" name="firstname" id="firstname" required>
+                    </div>
+                </div>
+                <div>
+                    <label for="lastname">Last Name:</label>
+                    <div class="subdiv">
+                        <input type="text" name="lastname" id="lastname">
+                    </div>
+                </div>
+                <div>
+                    <label for="dob">Date of Birth:</label>
+                    <div class="subdiv">
+                        <input type="date" name="dob" id="dob" required>
+                    </div>
+                </div>
+                <div>
+                    <label for="gender">Gender:</label>
+                    <div class="subdiv">
+                        <select name="gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                            <option value=" " selected>choose a gender</option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Account Information</legend>
+                <div>
+                    <label for="email">Email:</label>
+                    <div class="subdiv">
+                        <input type="email" name="email" id="email" required>
+                        <span>(Your email address will be your username.)</span>
+                    </div>
+
+                </div>
+                <div>
+                    <label for="remail">Re-type Email:</label>
+                    <div class="subdiv">
+                        <input type="email" name="remail" id="remail" required>
+                    </div>
+                </div>
+                <div>
+                    <label for="password">Password:</label>
+                    <div class="subdiv">
+                        <input type="password" name="password" id="password" minlength="8" required>
+                        <span>(Min. 8 characters, 1 number, case-sensitive)</span>
+                    </div>
+                </div>
+                <div>
+                    <label for="repassword">Re-type Password:</label>
+                    <div class="subdiv">
+                        <input type="password" name="repassword" id="repassword" minlength="8" required>
+                    </div>
+                </div>
+                <div>
+                    <label for="secQuestions">Security Questions:</label>
+                    <div class="subdiv">
+                        <select name="secQuestions">
+                            <option value="q1">What is your name?</option>
+                            <option value="q2">What is your fathers name?</option>
+                            <option value="q3">What is your mothers name?</option>
+                            <option value="" selected>Choose a security question.</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label for="secAnswer">Security Answers:</label>
+                    <div class="subdiv">
+                        <input type="text" name="secAnswer" id="secAnswer">
+                        <span>Not case-sensitive</span>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Contact Information</legend>
+                <div>
+                    <label for="address">Address:</label>
+                    <div class="subdiv">
+                        <input type="text" name="address" id="address">
+                    </div>
+                </div>
+                <div>
+                    <label for="city">City:</label>
+                    <div class="subdiv">
+                        <input type="text" name="city" id="city">
+                    </div>
+                </div>
+                <div>
+                    <label for="states">State:</label>
+                    <div class="subdiv">
+                        <select name="states">
+                            <option value="gujarat">Gujarat</option>
+                            <option value="maharashtra">Maharashtra</option>
+                            <option value="goa">Goa</option>
+                            <option value="rajasthan">Rajasthan</option>
+                            <option value="" selected>Choose a state.</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label for="zipcode">Zip Code:</label>
+                    <div class="subdiv">
+                        <input type="number" name="zipcode" id="zipcode" minlength="6" maxlength="6">
+                    </div>
+                </div>
+                <div>
+                    <label for="phone">Phone:</label>
+                    <div class="subdiv">
+                        <input type="tel" name="phone" id="phone" required>
+                        <span>No spaces or dashes</span>
+                    </div>
+                </div>
+            </fieldset>
+
+            <input type="submit" name="submit" value="submit">
+            <input type="reset" value="Reset">
+
+        </form>
+    </div>
+</body>
+
+</html>
