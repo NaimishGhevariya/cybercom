@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Html challenge 9</title>
+    <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <form action="view.html">
+            <h2>Student Information</h2>
+            <fieldset>
+                <div>
+                    <label for="id">Id</label>
+                    <input type="number" name="id" min="0" max="100" id="id">
+                </div>
+                <div>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name">
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email">
+                </div>
+                <div>
+                    <label for="dob">Date of birth</label>
+                    <input type="date" name="dob" id="dob">
+                </div>
+                <div>
+                    <label for="mobileNo">Mobile No.</label>
+                    <input type="tel" name="mobileNo" id="mobileNo">
+                </div>
+            </fieldset>
+            <input type="submit" value="Submit" formtarget="success.html" onclick="storeToLocalStorage()">
+            <input type="reset" value="Reset">
+
+        </form>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    var studentDetails = [];
+    var student = {};
+    //localStorage.clear();
+    if (localStorage.getItem('userArray')) {
+        studentDetails = JSON.parse(localStorage.getItem('userArray'))
+    }
+
+    function storeToLocalStorage() {
+        student.id = document.getElementById("id").value;
+        //console.log(student.id);
+        student.name = document.getElementById("name").value;
+        //console.log(student.name);
+        student.email = document.getElementById("email").value;
+        //console.log(student.email);
+        student.dob = document.getElementById("dob").value;
+        //console.log(student.dob);
+        student.mobileno = document.getElementById("mobileNo").value;
+        //console.log(student.mobileno);
+
+        console.log(student);
+
+        if (localStorage.getItem('studentDetails')) {
+            studentDetails = JSON.parse(localStorage.getItem('studentDetails'));
+            console.log(studentDetails);
+            studentDetails.push(student);
+            localStorage.setItem("studentDetails", JSON.stringify(studentDetails));
+        }
+        else {
+            studentDetails.push(student);
+            localStorage.setItem("studentDetails", JSON.stringify(studentDetails));
+        }
+
+
+    }
+</script>
