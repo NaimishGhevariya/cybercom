@@ -4,11 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>subuser</title>
+    <script src="../js/routing.js"></script>
+    <title>sub user Dashbord</title>
 </head>
 
 <body>
-    <h1>welcome to sub user</h1>
+    <div class="sidebar">
+        <div id="ack">Hello, admin</div>
+        <div class="menu">
+            <div id=""><a> Dashboard </a></div>
+            <div id=""><a onclick="logout()"> logout </a></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Dashboard</h1>
+        <p id="bdaywish"></p>
+    </div>
+
 </body>
+
+<script>
+    acknowledgeUser();
+    if (checkBirthday(JSON.parse(sessionStorage.getItem('activeUsers'))[0].dob) == true) {
+        document.getElementById('bdaywish').innerHTML = '<p>Happy Birthday !</p>';
+    }
+</script>
 
 </html>

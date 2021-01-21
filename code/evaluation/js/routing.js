@@ -4,34 +4,46 @@ function redirect(formid, pageName) {
     form = document.getElementById(formid);
 
     if (pageName == 'login') {
-        /*if (formid) {
-            form.action = 'login.html';
-            console.log(document.getElementById(formid).action);
-            console.log("redirected to login");
+        console.log("redirected to login")
+        if (formid != '') {
+            form.action = 'login.html'
         } else {
             window.location.href = 'login.html';
-        }*/
-        window.location.href = 'login.html';
+        }
     }
     if (pageName == 'register') {
         if (localStorage.getItem('adminDetails')) {
-            document.getElementById('registerbtn').disabled = true;
             alert("admin exists.");
-            redirect('registerationForm', 'login');
+            //redirect('registerationForm', 'login');
+            document.getElementById('registerbtn').disabled = true;
         } else {
+            window.location.href = 'registration.html';
             form.action = 'registration.html';
             console.log(document.getElementById(formid).action);
             console.log("redirected to registration");
         }
     }
     if (pageName == 'dashbord') {
-        form.action = 'dashbord.html';
-        console.log(document.getElementById(formid).action);
-        console.log("redirected to dashbord");
+
+        if (formid != '') {
+            form.action = 'dashbord.html';
+            console.log(document.getElementById(formid).action);
+            console.log("redirected to dashbord");
+        } else {
+            window.location.href = 'dashbord.html';
+        }
     }
     if (pageName == 'subuser') {
         form.action = 'subuser.html';
         console.log(document.getElementById(formid).action);
+        console.log("redirected to subuser");
+    }
+    if (pageName == 'users') {
+        window.location.href = 'users.html'
+        console.log("redirected to subuser");
+    }
+    if (pageName == 'loginSession') {
+        window.location.href = 'loginSession.html'
         console.log("redirected to subuser");
     }
 }
@@ -58,12 +70,20 @@ function registerAdmin() {
 
         localStorage.setItem("adminDetails", JSON.stringify(adminDetails));
         alert("admin added !!");
-        redirect('registerationForm', 'login');
+        redirect("registerationForm", 'login');
     } else {
         alert("enter valid input");
     }
 
 }
+function currentTime() {
+    var today = new Date();
+    var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    return date + ' ' + time;
+}
+
+var activeUsers = [];
 
 function login() {
     var email, password, admin, userExists;
@@ -76,13 +96,44 @@ function login() {
 
 
     if ((email == admin.email) && (password == admin.password)) {
+        var activeUser = {};
+
+        activeUser = admin;
+        activeUser.loginTime = currentTime();
+
+        if (sessionStorage.getItem('activeUsers')) {
+            activeUsers = JSON.parse(sessionStorage.getItem('activeUsers'));
+            console.log(activeUsers);
+            activeUsers.push(activeUser);
+            sessionStorage.setItem('activeUsers', JSON.stringify(activeUsers));
+        }
+        else {
+            activeUsers.push(activeUser);
+            sessionStorage.setItem('activeUsers', JSON.stringify(activeUsers));
+        }
         redirect('loginForm', 'dashbord');
     } else {
         for (i in users) {
             if ((email == users[i].email)) {
                 userExists = true;
-                var pwd = users[i].password;
-                if (password == pwd) {
+                if (password == users[i].password) {
+
+                    var activeUser = {};
+
+                    activeUser = users[i];
+                    activeUser.loginTime = currentTime();
+
+                    if (sessionStorage.getItem('activeUsers')) {
+                        activeUsers = JSON.parse(sessionStorage.getItem('activeUsers'));
+                        console.log(activeUsers);
+                        activeUsers.push(activeUser);
+                        sessionStorage.setItem('activeUsers', JSON.stringify(activeUsers));
+                    }
+                    else {
+                        activeUsers.push(activeUser);
+                        sessionStorage.setItem('activeUsers', JSON.stringify(activeUsers));
+                    }
+
                     redirect('loginForm', 'subuser');
                     break;
                 }
@@ -128,8 +179,10 @@ localStorage.setItem("userDetails", JSON.stringify(userDetails));
 */
 
 var userDetails = [];
-userDetails = JSON.parse(localStorage.getItem("userDetails"));
-console.log(userDetails);
+if (localStorage.getItem("userDetails")) {
+    userDetails = JSON.parse(localStorage.getItem("userDetails"));
+    console.log(userDetails);
+}
 
 function formatDate(d) {
     var date = new Date(d)
@@ -141,7 +194,7 @@ function getAge(date) {
     return dt.getFullYear() - d.getFullYear();
 }
 
-function createTable(tableId) {
+function generateUserDataTable(tableId) {
     var table, name, email, password, dob, age, action;
     table = document.getElementById(tableId);
 
@@ -216,8 +269,103 @@ function editUser(id) {
     }
 }
 
+var userSessions = [];
+if (localStorage.getItem("userSessions")) {
+    userSessions = JSON.parse(localStorage.getItem("userSessions"));
+    console.log(userSessions);
+}
+function generateLoginSessionTable(tableId) {
+    var table, name, loginTime, logoutTime;
+    table = document.getElementById(tableId);
+    for (i in userSessions) {
+        row = table.insertRow(i);
+        row.id = "data" + i;
+        name = row.insertCell(0);
+        loginTime = row.insertCell(1);
+        logoutTime = row.insertCell(2);
+
+        name.innerHTML = userSessions[i].name;
+        loginTime.innerHTML = userSessions[i].loginTime;
+        logoutTime.innerHTML = userSessions[i].logoutTime;
+    }
+}
+
 
 
 function logout() {
+
+    var activeSession = {};
+    var userSessions = [];
+    activeSession = JSON.parse(sessionStorage.getItem('activeUsers'));
+    activeSession[activeSession.length - 1].logoutTime = currentTime();
+    console.log(activeSession);
+
+    if (localStorage.getItem('userSessions')) {
+        userSessions = JSON.parse(localStorage.getItem('userSessions'));
+        console.log(userSessions);
+        userSessions.push(activeSession[activeSession.length - 1]);
+        activeSession.pop();
+        sessionStorage.setItem("activeUsers", JSON.stringify(activeSession));
+        localStorage.setItem("userSessions", JSON.stringify(userSessions));
+    }
+    else {
+        userSessions.push(activeSession[activeSession.length - 1]);
+        activeSession.pop();
+        sessionStorage.setItem("activeUsers", JSON.stringify(activeSession));
+        localStorage.setItem("userSessions", JSON.stringify(userSessions));
+    }
     redirect('', 'login');
+}
+
+function acknowledgeUser() {
+    document.getElementById('ack').innerHTML = 'Hello, ' + JSON.parse(sessionStorage.getItem('activeUsers'))[0].name;
+}
+
+
+
+function birthdateFormat(date) {
+    var birthdate = new Date(date);
+    return birthdate.getDate() + '/' + birthdate.getMonth();
+}
+
+
+function checkBirthday(dob) {
+    var bday = birthdateFormat(dob);
+    var d = new Date;
+    var today = d.getDate() + '/' + d.getMonth();
+    if (today == bday) {
+        return true;
+    }
+    else false;
+}
+
+
+function birthdayList(id) {
+    var str = "";
+    for (i in userDetails) {
+        if (checkBirthday(userDetails[i].dob)) {
+            str += '<p> Today is ' + userDetails[i].name + '\'s birthday.</p>';
+        }
+    }
+    document.getElementById('birthdayList').innerHTML = str;
+}
+
+function countByAgeGroup() {
+    var low, high, mid;
+    low = 0;
+    high = 0;
+    mid = 0;
+
+    for (i in userDetails) {
+        if (userDetails[i].age < 18) {
+            low++;
+        } else if (userDetails[i].age > 50) {
+            high++;
+        } else {
+            mid++;
+        }
+    }
+    document.getElementById('lowCount').innerHTML = low + ' Users';
+    document.getElementById('midCount').innerHTML = mid + ' Users';
+    document.getElementById('highCount').innerHTML = high + ' Users';
 }

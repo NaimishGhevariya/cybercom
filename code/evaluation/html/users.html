@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/routing.js"></script>
+    <title>Dashbord</title>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div id="ack">Hello, admin</div>
+        <div class="menu">
+            <div id=""><a onclick="redirect('','dashbord')">Dashboard</a></div>
+            <div id=""><a onclick="redirect('','users')"> users </a></div>
+            <div id=""><a onclick="redirect('','loginSession')"> login Session </a></div>
+            <div id=""><a onclick="logout()"> logout </a></div>
+        </div>
+    </div>
+
+    <div class="userSection" id="users">
+        <div class="addUser">
+            <h1 id="actionTitle">Add User</h1>
+            <form action="" id="addUserForm">
+                <fieldset>
+                    <input type="text" name="name" id="name" placeholder="Name" required>
+                    <input type="email" name="email" id="email" placeholder="Email" required>
+                    <input type="password" name="password" id="password" placeholder="Password" required>
+                    <input type="date" name="dob" id="dob" placeholder="Date of Birth" required>
+                </fieldset>
+                <input type="submit" name="addUserbtn" id="addUserbtn" value="Add User" onclick="addUser()">
+            </form>
+        </div>
+        <div>
+            <h1>User List</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Name</td>
+                        <td>Email</td>
+                        <td>Password</td>
+                        <td>Birthdate</td>
+                        <td>Age</td>
+                        <td>Actions</td>
+                    </tr>
+                </thead>
+                <tbody id="userListTable">
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+</body>
+
+<script>
+    window.onload = () => {
+        generateUserDataTable("userListTable");
+    }
+    acknowledgeUser();
+</script>
+
+</html>

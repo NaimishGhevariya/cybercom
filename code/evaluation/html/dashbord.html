@@ -12,18 +12,39 @@
     <div class="sidebar">
         <div id="ack">Hello, admin</div>
         <div class="menu">
-            <div id=""><a href="#dashboard"> Dashboard </a></div>
-            <div id=""><a href="#users"> users </a></div>
-            <div id=""><a href="#loginSession"> login Session </a></div>
-            <div id=""><a href="#logout" onclick="logout()"> logout </a></div>
+            <div id=""><a onclick="redirect('','dashbord')">Dashboard</a></div>
+            <div id=""><a onclick="redirect('','users')"> users </a></div>
+            <div id=""><a onclick="redirect('','loginSession')"> login Session </a></div>
+            <div id=""><a onclick="logout()"> logout </a></div>
         </div>
     </div>
 
     <div class="container">
-        <h1>Dashboard</h1>
+        <div class="dashbord" id="dashboard">
+            <h1>Dashboard</h1>
+            <div>
+                <div>
+                    <p> users < 18 Years</p>
+                            <p id="lowCount"> 12 users</p>
+                </div>
 
+                <div>
+                    <p> users 18 -50 Years</p>
+                    <p id="midCount"> 25 users</p>
+                </div>
 
-        <div class="userSection">
+                <div>
+                    <p> users > 50 Years</p>
+                    <p id="highCount"> 30 users</p>
+                </div>
+            </div>
+            <div id="birthdayList">
+
+            </div>
+
+        </div>
+        <!-- 
+        <div class="userSection" id="users">
             <div class="addUser">
                 <h1 id="actionTitle">Add User</h1>
                 <form action="" id="addUserForm">
@@ -56,14 +77,32 @@
             </div>
 
         </div>
+
+        <div id="#loginSession">
+            <h1>Login Sessions</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Name</td>
+                        <td>Login Date Time</td>
+                        <td>Logout Date Time</td>
+                    </tr>
+                </thead>
+                <tbody id="LoginSessionTable">
+
+                </tbody>
+            </table>
+        </div>
+
+ -->
     </div>
 
 </body>
 
 <script>
-    window.onload = () => {
-        createTable("userListTable");
-    }
+    birthdayList();
+    countByAgeGroup();
+    acknowledgeUser();
 </script>
 
 </html>
