@@ -344,7 +344,7 @@ function birthdayList(id) {
     var str = "";
     for (i in userDetails) {
         if (checkBirthday(userDetails[i].dob)) {
-            str += '<p> Today is ' + userDetails[i].name + '\'s birthday.</p>';
+            str += '<div><i class="fas fa-birthday-cake"></i><p> Today is ' + userDetails[i].name + '\'s birthday.</p></div>';
         }
     }
     document.getElementById('birthdayList').innerHTML = str;

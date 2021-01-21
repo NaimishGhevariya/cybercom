@@ -4,97 +4,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <script src="../js/routing.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
     <title>Dashbord</title>
 </head>
 
 <body>
     <div class="sidebar">
-        <div id="ack">Hello, admin</div>
+        <div id="ack"> Hello,</div>
         <div class="menu">
-            <div id=""><a onclick="redirect('','dashbord')">Dashboard</a></div>
-            <div id=""><a onclick="redirect('','users')"> users </a></div>
-            <div id=""><a onclick="redirect('','loginSession')"> login Session </a></div>
-            <div id=""><a onclick="logout()"> logout </a></div>
+            <div id=""><i class="fas fa-tachometer-alt"></i><a onclick="redirect('','dashbord')">Dashboard</a></div>
+            <div id=""><i class="fas fa-users    "></i><a onclick="redirect('','users')">users</a></div>
+            <div id=""><i class="fas fa-business-time"></i><a onclick="redirect('','loginSession')">loginSession
+                </a></div>
+            <div id=""><i class="fas fa-door-open"></i><a onclick="logout()">logout</a></div>
         </div>
     </div>
 
     <div class="container">
-        <div class="dashbord" id="dashboard">
+        <div class="dashbord">
             <h1>Dashboard</h1>
-            <div>
-                <div>
+            <div class="flagsHolder">
+                <div class="flag">
                     <p> users < 18 Years</p>
                             <p id="lowCount"> 12 users</p>
                 </div>
 
-                <div>
+                <div class="flag">
                     <p> users 18 -50 Years</p>
                     <p id="midCount"> 25 users</p>
                 </div>
 
-                <div>
+                <div class="flag">
                     <p> users > 50 Years</p>
                     <p id="highCount"> 30 users</p>
                 </div>
             </div>
+            <h1>Birthday List</h1>
             <div id="birthdayList">
 
             </div>
 
         </div>
-        <!-- 
-        <div class="userSection" id="users">
-            <div class="addUser">
-                <h1 id="actionTitle">Add User</h1>
-                <form action="" id="addUserForm">
-                    <fieldset>
-                        <input type="text" name="name" id="name" placeholder="Name" required>
-                        <input type="email" name="email" id="email" placeholder="Email" required>
-                        <input type="password" name="password" id="password" placeholder="Password" required>
-                        <input type="date" name="dob" id="dob" placeholder="Date of Birth" required>
-                    </fieldset>
-                    <input type="submit" name="addUserbtn" id="addUserbtn" value="Add User" onclick="addUser()">
-                </form>
-            </div>
-            <div>
-                <h1>User List</h1>
-                <table>
-                    <thead>
-                        <tr>
-                            <td>Name</td>
-                            <td>Email</td>
-                            <td>Password</td>
-                            <td>Birthdate</td>
-                            <td>Age</td>
-                            <td>Actions</td>
-                        </tr>
-                    </thead>
-                    <tbody id="userListTable">
-
-                    </tbody>
-                </table>
-            </div>
-
-        </div>
-
-        <div id="#loginSession">
-            <h1>Login Sessions</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <td>Name</td>
-                        <td>Login Date Time</td>
-                        <td>Logout Date Time</td>
-                    </tr>
-                </thead>
-                <tbody id="LoginSessionTable">
-
-                </tbody>
-            </table>
-        </div>
-
- -->
     </div>
 
 </body>

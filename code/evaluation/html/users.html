@@ -4,22 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <script src="../js/routing.js"></script>
-    <title>Dashbord</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Users</title>
 </head>
 
 <body>
     <div class="sidebar">
-        <div id="ack">Hello, admin</div>
+        <div id="ack"> Hello,</div>
         <div class="menu">
-            <div id=""><a onclick="redirect('','dashbord')">Dashboard</a></div>
-            <div id=""><a onclick="redirect('','users')"> users </a></div>
-            <div id=""><a onclick="redirect('','loginSession')"> login Session </a></div>
-            <div id=""><a onclick="logout()"> logout </a></div>
+            <div id=""><i class="fas fa-tachometer-alt"></i><a onclick="redirect('','dashbord')">Dashboard</a></div>
+            <div id=""><i class="fas fa-users    "></i><a onclick="redirect('','users')">users</a></div>
+            <div id=""><i class="fas fa-business-time"></i><a onclick="redirect('','loginSession')">loginSession
+                </a></div>
+            <div id=""><i class="fas fa-door-open"></i><a onclick="logout()">logout</a></div>
         </div>
     </div>
 
-    <div class="userSection" id="users">
+    <div class="container">
         <div class="addUser">
             <h1 id="actionTitle">Add User</h1>
             <form action="" id="addUserForm">
