@@ -4,9 +4,14 @@ function redirect(formid, pageName) {
     form = document.getElementById(formid);
 
     if (pageName == 'login') {
-        form.action = 'login.html';
-        console.log(document.getElementById(formid).action);
-        console.log("redirected to login");
+        /*if (formid) {
+            form.action = 'login.html';
+            console.log(document.getElementById(formid).action);
+            console.log("redirected to login");
+        } else {
+            window.location.href = 'login.html';
+        }*/
+        window.location.href = 'login.html';
     }
     if (pageName == 'register') {
         if (localStorage.getItem('adminDetails')) {
@@ -19,7 +24,6 @@ function redirect(formid, pageName) {
             console.log("redirected to registration");
         }
     }
-
     if (pageName == 'dashbord') {
         form.action = 'dashbord.html';
         console.log(document.getElementById(formid).action);
@@ -31,11 +35,11 @@ function redirect(formid, pageName) {
         console.log("redirected to subuser");
     }
 }
-//localStorage.clear();
+
 function registerAdmin() {
 
     var adminDetails = {};
-    var name, email, password, confirmPassword, city, state, terms;
+    var name, email, password, confirmPassword, city, state;
     name = document.getElementById('name').value;
     email = document.getElementById('email').value;
     password = document.getElementById('password').value;
@@ -62,28 +66,34 @@ function registerAdmin() {
 }
 
 function login() {
-    var email, password, admin;
+    var email, password, admin, userExists;
+    var users = [];
     email = document.getElementById('email').value;
     password = document.getElementById('password').value;
 
     admin = JSON.parse(localStorage.getItem('adminDetails'));
-    users = JSON.parse(localStorage.getItem('usertDetails'));
-    console.log(user);
+    users = JSON.parse(localStorage.getItem('userDetails'));
+
+
     if ((email == admin.email) && (password == admin.password)) {
         redirect('loginForm', 'dashbord');
     } else {
-        for (user of users) {
-            if ((email == user.email)) {
-                console.log("email mached");
-                if (password == user.password) {
+        for (i in users) {
+            if ((email == users[i].email)) {
+                userExists = true;
+                var pwd = users[i].password;
+                if (password == pwd) {
                     redirect('loginForm', 'subuser');
                     break;
                 }
                 else alert("invalid password !!");
+            } else {
+                userExists = false;
             }
-            else {
-                alert("user does not exist");
-            }
+        }
+
+        if (userExists == false) {
+            alert("user does noe exists");
         }
     }
 }
@@ -112,7 +122,7 @@ userDetails = [
     }
 
 ]
-
+localStorage.clear();
 localStorage.setItem("userDetails", JSON.stringify(userDetails));
 
 */
@@ -121,8 +131,10 @@ var userDetails = [];
 userDetails = JSON.parse(localStorage.getItem("userDetails"));
 console.log(userDetails);
 
-
-
+function formatDate(d) {
+    var date = new Date(d)
+    return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
+}
 function getAge(date) {
     var d = new Date(date)
     var dt = new Date();
@@ -130,10 +142,8 @@ function getAge(date) {
 }
 
 function createTable(tableId) {
-
-    var table = document.getElementById(tableId);
-    var name, email, password, dob, age, action;
-
+    var table, name, email, password, dob, age, action;
+    table = document.getElementById(tableId);
 
     for (i in userDetails) {
         row = table.insertRow(i);
@@ -144,53 +154,70 @@ function createTable(tableId) {
         dob = row.insertCell(3);
         age = row.insertCell(4);
         action = row.insertCell(5);
-        action.id = "cell" + i;
 
         name.innerHTML = userDetails[i].name;
         email.innerHTML = userDetails[i].email;
         password.innerHTML = userDetails[i].password;
-        dob.innerHTML = userDetails[i].dob;
+        dob.innerHTML = formatDate(userDetails[i].dob);
         age.innerHTML = getAge(userDetails[i].dob);
         action.innerHTML = '<button id="edit' + i + '" onclick="editUser(this.id)">Edit</button> <button  id="delete' + i + '" onclick="deleteUser(this.id)">Delete</button>';
     }
 }
 
-
-
-var userStorage = [];
-var user = {};
-if (localStorage.getItem('userDetails')) {
-    userStorage = JSON.parse(localStorage.getItem('userDetails'));
-}
-
 function addUser() {
+    var user = {};
+    document.getElementById('actionTitle').innerHTML = "Add User";
+    document.getElementById('addUserbtn').value = 'add user';
+
     user.name = document.getElementById('name').value;
     user.email = document.getElementById('email').value;
     user.password = document.getElementById('password').value;
     user.dob = document.getElementById('dob').value;
-    user.age = 20;
+    user.age = getAge(user.dob);
 
     if (localStorage.getItem('userDetails')) {
-        userStorage = JSON.parse(localStorage.getItem('userDetails'));
+        userDetails = JSON.parse(localStorage.getItem('userDetails'));
         console.log(userDetails);
-        userStorage.push(user);
-        localStorage.setItem("userDetails", JSON.stringify(userStorage));
+        userDetails.push(user);
+        localStorage.setItem("userDetails", JSON.stringify(userDetails));
     }
     else {
-        userStorage.push(user);
-        localStorage.setItem("userDetails", JSON.stringify(userStorage));
+        userDetails.push(user);
+        localStorage.setItem("userDetails", JSON.stringify(userDetails));
     }
-
 }
 
 
 function deleteUser(id) {
-    var rowIndx = document.getElementById(id).parentElement.parentNode.rowIndex;
-    console.log(rowIndx);
-    document.getElementById("userListTable").deleteRow(rowIndx - 1);
-    var data = [];
-    data = localStorage.getItem('userDetails');
-    console.log(data);
-    data.splice(rowIndx, 1);
-    localStorage.setItem('userDetails', data);
+    var rowNo = document.getElementById(id).parentElement.parentNode.rowIndex;
+    console.log(rowNo - 1);
+    document.getElementById("userListTable").deleteRow(rowNo - 1);
+    userDetails.splice(rowNo - 1, 1);
+    localStorage.setItem('userDetails', JSON.stringify(userDetails));
+}
+
+function editUser(id) {
+    document.getElementById('actionTitle').innerHTML = "Edit User";
+    document.getElementById('addUserbtn').id = 'updateUserbtn';
+    document.getElementById('updateUserbtn').value = 'update user';
+    var rowNo = document.getElementById(id).parentElement.parentNode.rowIndex;
+
+    document.getElementById('name').value = userDetails[rowNo - 1].name;
+    document.getElementById('email').value = userDetails[rowNo - 1].email;
+    document.getElementById('password').value = userDetails[rowNo - 1].password;
+    document.getElementById('dob').value = userDetails[rowNo - 1].dob;
+
+    document.getElementById('updateUserbtn').onclick = () => {
+        userDetails[rowNo - 1].name = document.getElementById('name').value;
+        userDetails[rowNo - 1].email = document.getElementById('email').value;
+        userDetails[rowNo - 1].password = document.getElementById('password').value;
+        userDetails[rowNo - 1].dob = document.getElementById('dob').value;
+        localStorage.setItem('userDetails', JSON.stringify(userDetails));
+    }
+}
+
+
+
+function logout() {
+    redirect('', 'login');
 }
