@@ -74,43 +74,43 @@ function login() {
         alert("user does not exist");
     }
 }
-
+/*
 userDetails = [
     {
         name: 'abc',
         email: 'abc@bc.a',
         password: '0123456',
-        dob: '2020-12-1',
+        dob: '2020-12-01',
         age: '25'
     },
     {
         name: 'def',
         email: 'def@bc.a',
         password: '5623456',
-        dob: '2000-1-1',
+        dob: '2000-01-01',
         age: '29'
     }, {
         name: 'ghi',
         email: 'ghi@bc.a',
         password: '5632456',
-        dob: '1999-5-31',
+        dob: '1999-05-31',
         age: '22'
     }
 
-]
-
+]*/
+/*
 localStorage.setItem("userDetails", JSON.stringify(userDetails));
+*/
 
-function _calculateAge(birthday) { // birthday is a date
-    console.log("calculat function");
-    var ageDifMs = Date.now() - birthday.getTime();
-    var ageDate = new Date(ageDifMs); // miliseconds from epoch
-    return Math.abs(ageDate.getUTCFullYear() - 1970);
-}
+var userDetails = [];
+userDetails = JSON.parse(localStorage.getItem("userDetails"));
+console.log(userDetails);
 
 window.onload = () => {
     createTable("userListTable");
 }
+
+
 
 function createTable(tableId) {
     console.log("table function");
@@ -121,7 +121,7 @@ function createTable(tableId) {
 
     for (i in userDetails) {
         row = table.insertRow(i);
-
+        row.id = "data" + i;
         name = row.insertCell(0);
         email = row.insertCell(1);
         password = row.insertCell(2);
@@ -133,10 +133,35 @@ function createTable(tableId) {
         email.innerHTML = userDetails[i].email;
         password.innerHTML = userDetails[i].password;
         dob.innerHTML = userDetails[i].dob;
-        age.innerHTML = _calculateAge(userDetails[i].dob);
+        age.innerHTML = 20 //Date.now().getFullYear() - userDetails[i].dob.getFullYear();
         action.innerHTML = '<a href="" id="edit">Edit</a> <a href="" id="delete">Delete</a>';
-
     }
+}
+
+var userStorage = [];
+var user = {};
+if (localStorage.getItem('userDetails')) {
+    userStorage = JSON.parse(localStorage.getItem('userDetails'));
+}
+
+function addUser() {
+    user.name = document.getElementById('name').value;
+    user.email = document.getElementById('email').value;
+    user.password = document.getElementById('password').value;
+    user.dob = document.getElementById('dob').value;
+    user.age = 20;
+
+    if (localStorage.getItem('userDetails')) {
+        userStorage = JSON.parse(localStorage.getItem('userDetails'));
+        console.log(userDetails);
+        userStorage.push(user);
+        localStorage.setItem("userDetails", JSON.stringify(userStorage));
+    }
+    else {
+        userStorage.push(user);
+        localStorage.setItem("userDetails", JSON.stringify(userStorage));
+    }
+
 }
 
 
