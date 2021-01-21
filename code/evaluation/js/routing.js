@@ -10,6 +10,7 @@ function redirect(formid, pageName) {
     }
     if (pageName == 'register') {
         if (localStorage.getItem('adminDetails')) {
+            document.getElementById('registerbtn').disabled = true;
             alert("admin exists.");
             redirect('registerationForm', 'login');
         } else {
@@ -18,10 +19,16 @@ function redirect(formid, pageName) {
             console.log("redirected to registration");
         }
     }
+
     if (pageName == 'dashbord') {
         form.action = 'dashbord.html';
         console.log(document.getElementById(formid).action);
         console.log("redirected to dashbord");
+    }
+    if (pageName == 'subuser') {
+        form.action = 'subuser.html';
+        console.log(document.getElementById(formid).action);
+        console.log("redirected to subuser");
     }
 }
 //localStorage.clear();
@@ -60,20 +67,27 @@ function login() {
     password = document.getElementById('password').value;
 
     admin = JSON.parse(localStorage.getItem('adminDetails'));
-
-    console.log(admin.email);
-    console.log(admin.password);
-    console.log(email);
-    console.log(password);
+    users = JSON.parse(localStorage.getItem('usertDetails'));
+    console.log(user);
     if ((email == admin.email) && (password == admin.password)) {
         redirect('loginForm', 'dashbord');
-    } else if (x) {
-        //
-    }
-    else {
-        alert("user does not exist");
+    } else {
+        for (user of users) {
+            if ((email == user.email)) {
+                console.log("email mached");
+                if (password == user.password) {
+                    redirect('loginForm', 'subuser');
+                    break;
+                }
+                else alert("invalid password !!");
+            }
+            else {
+                alert("user does not exist");
+            }
+        }
     }
 }
+
 /*
 userDetails = [
     {
@@ -97,26 +111,28 @@ userDetails = [
         age: '22'
     }
 
-]*/
-/*
+]
+
 localStorage.setItem("userDetails", JSON.stringify(userDetails));
+
 */
 
 var userDetails = [];
 userDetails = JSON.parse(localStorage.getItem("userDetails"));
 console.log(userDetails);
 
-window.onload = () => {
-    createTable("userListTable");
+
+
+function getAge(date) {
+    var d = new Date(date)
+    var dt = new Date();
+    return dt.getFullYear() - d.getFullYear();
 }
 
-
-
 function createTable(tableId) {
-    console.log("table function");
+
     var table = document.getElementById(tableId);
-    console.log(tableId)
-    var id, name, email, dob, mobileno;
+    var name, email, password, dob, age, action;
 
 
     for (i in userDetails) {
@@ -128,15 +144,18 @@ function createTable(tableId) {
         dob = row.insertCell(3);
         age = row.insertCell(4);
         action = row.insertCell(5);
+        action.id = "cell" + i;
 
         name.innerHTML = userDetails[i].name;
         email.innerHTML = userDetails[i].email;
         password.innerHTML = userDetails[i].password;
         dob.innerHTML = userDetails[i].dob;
-        age.innerHTML = 20 //Date.now().getFullYear() - userDetails[i].dob.getFullYear();
-        action.innerHTML = '<a href="" id="edit">Edit</a> <a href="" id="delete">Delete</a>';
+        age.innerHTML = getAge(userDetails[i].dob);
+        action.innerHTML = '<button id="edit' + i + '" onclick="editUser(this.id)">Edit</button> <button  id="delete' + i + '" onclick="deleteUser(this.id)">Delete</button>';
     }
 }
+
+
 
 var userStorage = [];
 var user = {};
@@ -165,3 +184,13 @@ function addUser() {
 }
 
 
+function deleteUser(id) {
+    var rowIndx = document.getElementById(id).parentElement.parentNode.rowIndex;
+    console.log(rowIndx);
+    document.getElementById("userListTable").deleteRow(rowIndx - 1);
+    var data = [];
+    data = localStorage.getItem('userDetails');
+    console.log(data);
+    data.splice(rowIndx, 1);
+    localStorage.setItem('userDetails', data);
+}
