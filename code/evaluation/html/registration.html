@@ -5,34 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="../js/routing.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
     <title>Register</title>
 </head>
 
-<body>
-    <h1>Register</h1>
-    <form action="" id="registerationForm">
-        <input type="text" name="name" id="name" placeholder="Name" required>
-        <input type="text" name="email" id="email" placeholder="email" required>
-        <input type="password" name="password" id="password" placeholder="password" required>
-        <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm password" required>
-        <select name="citylist" id="city" required>
-            <option value="surat">surat</option>
-            <option value="ahmedabad">ahmedabad</option>
-            <option value="rajkot">rajkot</option>
-            <option value="vadodara">vadodara</option>
-            <option value=" " selected>Select City</option>
-        </select>
-        <select name="statelist" id="state" required>
-            <option value="gujarat">gujarat</option>
-            <option value="rajasthan">rajasthan</option>
-            <option value="panjab">panjab</option>
-            <option value="maharashtra">maharashtra</option>
-            <option value=" " selected>Select state</option>
-        </select>
-        <input type="checkbox" name="terms" id="terms" required>
-        <label for="terms"> Terms & Conditions</label>
-        <input type="submit" id="submitbtn" value="Register" onclick="registerAdmin()">
-    </form>
+<body class="loginpage">
+    <div class="login">
+        <h1>Register</h1>
+        <form action="" id="registerationForm">
+            <input type="text" name="name" id="name" placeholder="Name" required>
+            <input type="text" name="email" id="email" placeholder="email" required>
+            <input type="password" name="password" id="password" placeholder="password" required>
+            <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm password" required>
+            <select name="citylist" id="city" required>
+                <option value="surat">surat</option>
+                <option value="ahmedabad">ahmedabad</option>
+                <option value="rajkot">rajkot</option>
+                <option value="vadodara">vadodara</option>
+                <option value=" " selected>Select City</option>
+            </select>
+            <select name="statelist" id="state" required>
+                <option value="gujarat">gujarat</option>
+                <option value="rajasthan">rajasthan</option>
+                <option value="panjab">panjab</option>
+                <option value="maharashtra">maharashtra</option>
+                <option value=" " selected>Select state</option>
+            </select>
+            <div class="checkbox">
+                <input type="checkbox" name="terms" id="terms" required>
+                <label for="terms"> Terms & Conditions</label>
+            </div>
+            <input type="submit" id="submitbtn" value="Register" onclick="registerAdmin()">
+        </form>
+    </div>
 </body>
 
 </html>
