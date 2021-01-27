@@ -1,9 +1,10 @@
 <?php 
 
-$str = 'no signal, please contact operator.';
+$str = 'no signal, please contact operators.';
 
-$search = 'operator';
+$search = 'operators';
 
 echo strrpos($str,$search,0);
+echo strrpos($str,$search,10);
  ?>
 
