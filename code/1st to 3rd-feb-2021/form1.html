@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/form1.js"></script>
+    <script src="js/general.js"></script>
+    <title>form 1</title>
+</head>
+<style>
+    table,
+    td {
+        border: 1px solid black;
+    }
+
+    table {
+        margin: auto;
+    }
+
+    thead {
+        text-align: center;
+        font-weight: bold;
+    }
+
+    span {
+        color: red;
+
+    }
+</style>
+
+<body>
+    <form action="" method="POST" id="form" enctype="multipart/form-data">
+        <table>
+            <thead>
+                <tr>
+                    <td colspan="2">User Form</td>
+                </tr>
+            </thead>
+            <tr>
+                <td colspan="2"> <span>* required</span></td>
+            </tr>
+            <tr>
+                <td>Enter name:</td>
+                <td><input type="text" name="name" id="name">
+                    <span>*</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Enter password:</td>
+                <td><input type="password" name="password" id="password">
+                    <span>*</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Enter Address:</td>
+                <td><textarea name="address" id="address" cols="30" rows="4"></textarea>
+                    <span>*</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Select Games:</td>
+                <td>
+                    <input type="checkbox" name="games[]" id="hockey" value="Hockey">
+                    <label for="hockey">Hockey</label>
+                    <input type="checkbox" name="games[]" id="football" value="football">
+                    <label for="football">Football</label>
+                    <input type="checkbox" name="games[]" id="badminton" value="badminton">
+                    <label for="badminton">Badminton</label>
+                    <input type="checkbox" name="games[]" id="cricket" value="cricket">
+                    <label for="cricket">Cricket</label>
+                    <input type="checkbox" name="games[]" id="vollyball" value="vollyball">
+                    <label for="vollyball">VollyBall</label>
+                    <span>*</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>
+                    <input type="radio" name="gender" value="male" id="male">
+                    <label for="male">Male</label>
+                    <input type="radio" name="gender" value="female" id="female">
+                    <label for="female">Female</label>
+                    <input type="radio" name="gender" value="other" id="other">
+                    <label for="other">Other</label>
+                    <span>*</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Select your age:</td>
+                <td>
+                    <select name="age" id="age">+
+                        <option value="bleow20">below 20</option>
+                        <option value="20to30">20 to 30</option>
+                        <option value="30above">above 30</option>
+                        <option value="" selected>age</option>
+                    </select>
+                    <span>*</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="file" name="file" id="file"> <span>*</span></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="submit" name="submit" onclick="validate('php/form1.php')">
+                    <input type="reset" value="reset">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

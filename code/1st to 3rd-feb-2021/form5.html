@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/general.js"></script>
+    <script src="js/form5.js"></script>
+    <title>form 5</title>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td colspan="2">Sign in</td>
+            </tr>
+        </thead>
+        <tbody>
+            <form action="" method="POST" id="form">
+                <tr>
+                    <td><label for="email">Email</label><br>
+                        <input type="email" name="email" id="email">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="password">Password</label><br>
+                        <input type="password" name="password" id="password">
+                    </td>
+                </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2"><input type="submit" value="SEND MESSAGE" onclick="validate('php/form5.php')"></td>
+            </tr>
+        </tfoot>
+        </form>
+        <style>
+            table,
+            td {
+                border: 1px solid black;
+                border-collapse: collapse;
+
+            }
+
+            td {
+                border-bottom: none;
+                padding: 2%;
+            }
+
+            thead,
+            tfoot {
+                border: 1px solid black;
+                text-align: center;
+                font-weight: bold;
+                font-size: 1.5em;
+            }
+
+            table {
+                width: 30%;
+                margin: auto;
+            }
+
+            input,
+            textarea {
+                width: 96%;
+                margin: auto;
+                padding: 2%;
+                border: 1px solid black;
+            }
+
+            input[type="submit"] {
+                width: 50%;
+                margin: auto;
+            }
+
+            textarea {
+                resize: vertical;
+            }
+        </style>
+    </table>
+</body>
+
+</html>

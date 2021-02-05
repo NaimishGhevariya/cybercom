@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/general.js"></script>
+    <script src="js/form2.js"></script>
+    <title>form 2</title>
+</head>
+
+<body>
+    <form action="" method="POST" id='form'>
+        <fieldset>
+            <legend>USER FORM</legend>
+            <ul>
+                <li>
+                    <label for="name">First name:</label>
+                    <input type="text" name="firstname" id="fname">
+                </li>
+                <li>
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password">
+                </li>
+                <li>
+                    <label for="">Gender:</label>
+                    <input type="radio" name="gender" value="male" id="male">
+                    <label for="male">Male</label>
+                    <input type="radio" name="gender" value="female" id="female">
+                    <label for="female">Female</label>
+                    <input type="radio" name="gender" value="other" id="other">
+                    <label for="other">Other</label>
+                </li>
+                <li>
+                    <label for="address">Address:</label>
+                    <textarea name="address" id="address" cols="30" rows="5"></textarea>
+                </li>
+                <li>
+                    <label for="dob">Date of birth:</label>
+                    <input type="date" name="dob" id="dob">
+                </li>
+                <li>
+                    <label for="games">Select games:</label>
+
+                    <input type="checkbox" name="games[]" id="hockey" value="Hockey">
+                    <label for="hockey">Hockey</label>
+                    <input type="checkbox" name="games[]" id="football" value="football">
+                    <label for="football">Football</label>
+                    <input type="checkbox" name="games[]" id="cricket" value="cricket">
+                    <label for="cricket">Cricket</label>
+                    <input type="checkbox" name="games[]" id="vollyball" value="vollyball">
+                    <label for="vollyball">VollyBall</label>
+                </li>
+                <li>
+                    <label for="maritalstatus">Marital status:</label>
+                    <input type="radio" name="maritalstatus" value="married" id="married">
+                    <label for="married">Married</label>
+                    <input type="radio" name="maritalstatus" value="unmarried" id="unmarried">
+                    <label for="unmarried">Unmarried</label>
+                </li>
+                <li>
+                    <label for=""></label>
+                    <input type="checkbox" name="tnc" id="tnc">
+                    <label for="tnc"> I accept this agreement</label>
+                </li>
+                <li>
+                    <input type="submit" value="Submit" onclick="validate('php/form2.php')">
+                    <input type="reset" value="Reset">
+                </li>
+            </ul>
+
+        </fieldset>
+    </form>
+
+    <style>
+        fieldset {
+            width: 50%;
+            margin: auto;
+        }
+
+        legend {
+            text-align: center;
+        }
+
+        li {
+            padding: 1%;
+            width: 100%;
+        }
+
+        label {
+            vertical-align: top;
+        }
+
+        li label:first-child {
+            display: inline-block;
+            width: 30%;
+        }
+
+        ul li:nth-last-child(2) {
+            list-style-type: none;
+        }
+
+        ul li:last-child {
+            list-style-type: none;
+            padding: 0 25%;
+            margin: 3% 0;
+        }
+
+        input[type='submit'],
+        input[type='reset'] {
+            width: 20%;
+            margin: 0 2.5%;
+            padding: 1%;
+        }
+    </style>
+</body>
+
+</html>

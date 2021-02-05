@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/form3.js"></script>
+    <script src="js/general.js"></script>
+    <title>form 3</title>
+</head>
+<style>
+    table,
+    td {
+        border-collapse: collapse;
+        border: 1px solid black;
+    }
+
+    table {
+        width: 50%;
+        margin: auto;
+    }
+
+    td {
+        padding: 1%;
+    }
+
+    tbody td:first-child {
+        text-align: right;
+    }
+
+    thead {
+        font-weight: bold;
+    }
+
+    span {
+        color: red;
+
+    }
+</style>
+
+<body>
+    <form action="" method="POST" id="form">
+        <table>
+            <thead>
+                <tr>
+                    <td colspan="2">User Form</td>
+                </tr>
+            </thead>
+            <tr>
+                <td colspan="2"> <span>* required</span></td>
+            </tr>
+            <tr>
+                <td>First name</td>
+                <td><input type="text" name="fname" id="fname" placeholder="Enter firstname">
+                    <span>*</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Last name</td>
+                <td><input type="text" name="lname" id="lname" placeholder="Enter lastname">
+                    <span>*</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Date of birth</td>
+                <td><input type="date" name="dob" id="dob">
+                    <span>*</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>
+                    <input type="radio" name="gender" value="male" id="male">
+                    <label for="male">Male</label>
+                    <input type="radio" name="gender" value="female" id="female">
+                    <label for="female">Female</label>
+                    <input type="radio" name="gender" value="other" id="other">
+                    <label for="other">Other</label>
+                    <span>*</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Country</td>
+                <td>
+                    <select name="country" id="country">
+                        <option value="india">India</option>
+                        <option value="newzealand">New Zealand</option>
+                        <option value="australia">Australia</option>
+                        <option value="" selected>Country</option>
+                    </select>
+                    <span>*</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>
+                    <input type="email" name="email" id="email" placeholder="Enter email">
+                    <span>*</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td>
+                    <input type="tel" name="phone" id="phone" placeholder="Enter phone">
+                    <span>*</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" name="password" id="password">
+                    <span>*</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Confirm password</td>
+                <td><input type="password" name="confpassword" id="confpassword">
+                    <span>*</span>
+                </td>
+            </tr>
+
+
+
+            <tr>
+                <td></td>
+                <td>
+                    <input type="checkbox" name="tnc" id="tnc">
+                    <label for="tnc"> I agree to the term of use. </label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="submit" onclick="validate('php/form3.php')">
+                    <input type="reset" value="reset">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>
