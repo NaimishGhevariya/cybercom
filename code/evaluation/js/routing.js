@@ -265,6 +265,7 @@ function editUser(id) {
         userDetails[rowNo - 1].email = document.getElementById('email').value;
         userDetails[rowNo - 1].password = document.getElementById('password').value;
         userDetails[rowNo - 1].dob = document.getElementById('dob').value;
+        userDetails[rowNo - 1].age = getAge(userDetails[rowNo - 1].dob);
         localStorage.setItem('userDetails', JSON.stringify(userDetails));
     }
 }
@@ -283,7 +284,6 @@ function generateLoginSessionTable(tableId) {
         name = row.insertCell(0);
         loginTime = row.insertCell(1);
         logoutTime = row.insertCell(2);
-
         name.innerHTML = userSessions[i].name;
         loginTime.innerHTML = userSessions[i].loginTime;
         logoutTime.innerHTML = userSessions[i].logoutTime;
