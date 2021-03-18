@@ -1,0 +1,42 @@
+.nav-link {
+  color: white !important;
+}
+.nav-link:hover i {
+  color: #0b5ed7 !important;
+}
+.preview {
+  height: 100px !important;
+  width: 100px !important;
+}
+
+.one-column-layout,
+.one-column-layout-edit {
+  width: 100%;
+  border: 0;
+}
+
+.one-column-layout-header,
+.one-column-layout-message,
+.one-column-layout-footer {
+  width: 100%;
+  display: block;
+}
+
+.one-column-layout-content {
+  width: 100%;
+  display: block;
+  min-height: 78.5vh;
+}
+
+.one-column-layout-left-tab {
+  width: 10%;
+  padding: 0 !important;
+  margin: 0;
+  vertical-align: top;
+}
+
+.one-column-layout-left-tab-content {
+  width: 90%;
+  padding: 0;
+  margin: 0;
+}
