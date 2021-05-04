@@ -48,21 +48,22 @@ class Category extends Core\Table
             $path = $parent->path . "=" . $this->categoryId;
         }
         $this->path = $path;
-
         return $this->save();
     }
 
     public function updateChildrenPaths($path, $parentId = null)
     {
         $path = $path . "=";
-        $query = "SELECT * FROM `{$this->getTableName()}` WHERE `path` LIKE '{$path}%' ORDER BY `path` ASC ";
+        $query = "SELECT * FROM `{$this->getTableName()}` 
+        WHERE `path` LIKE '{$path}%' 
+        ORDER BY `path` ASC ";
         $categories = $this->fetchAll($query);
         if ($categories) {
             foreach ($categories->getData() as $row) {
-                if ($parentId) {
+                if ($parentId != null) {
                     $row->parentId = $parentId;
                 }
-                $categories->updatePath();
+                $row->updatePath();
             }
         }
     }

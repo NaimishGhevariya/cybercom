@@ -4,7 +4,6 @@ namespace Model\Admin;
 
 class Collection
 {
-
 	protected $data = [];
 
 	public function setData(array $data)

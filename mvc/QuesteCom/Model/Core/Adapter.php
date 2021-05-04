@@ -130,4 +130,35 @@ class Adapter
         $values = array_column($rows, '1');
         return array_combine($columns, $values);
     }
+
+    public function fetchOne($query)
+    {
+        if (!$this->isConnected()) {
+            $this->connection();
+        }
+
+        $result = $this->getConnect()->query($query) or $this->error($this->getConnect()->errno, $this->getConnect()->error, $query);
+        return $result->num_rows;
+        // $row = $result->fetch_assoc();
+
+        // if (!$row) {
+        //     return $row;
+        // }
+        // \print_r($row);
+        // die;
+        // return $row;
+    }
+
+    public function alterTable($query)
+    {
+        if (!$this->isConnected()) {
+            $this->connection();
+        }
+        $result = $this->getConnect()->query($query);
+
+        if (!$result) {
+            return \false;
+        }
+        return true;
+    }
 }

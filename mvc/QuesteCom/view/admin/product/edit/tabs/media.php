@@ -8,8 +8,17 @@ if ($media) {
 
 <div class="container">
     <form method="POST" enctype="multipart/form-data" action="<?php echo $this->getUrlObject()->getUrl('update', 'productMedia', ['id' => $id], TRUE); ?>">
-        <input class="btn btn-primary float-end mx-3" type="submit" value="Update" formaction="<?php echo $this->getUrlObject()->getUrl('update', 'productMedia', ['id' => $id]); ?>">
-        <input class="btn btn-primary float-end mx-3" type="submit" value="Remove" formaction="<?php echo $this->getUrlObject()->getUrl('delete', 'productMedia',  ['id' => $id]); ?>">
+        <div class="my-4">
+            <div class="col-md-8 float-start">
+                <input type="file" class="form-control" name="image">
+            </div>
+            <div class="col-md-4 float-end">
+                <button class="btn btn-primary float-end" type="submit" formaction="<?php echo $this->getUrlObject()->getUrl('save', 'productMedia', ['id' => $id]); ?>"><i class="fas fa-upload"></i> Upload</button>
+            </div>
+        </div>
+
+        <button class="btn btn-primary float-end mt-3 ms-3" type="submit" formaction="<?php echo $this->getUrlObject()->getUrl('update', 'productMedia', ['id' => $id]); ?>"><i class="fas fa-pencil-alt"></i> Update</button>
+        <button class="btn btn-primary float-end mt-3 ms-3" type="submit" formaction="<?php echo $this->getUrlObject()->getUrl('delete', 'productMedia',  ['id' => $id]); ?>"><i class="fas fa-trash-alt"></i> Remove</button>
 
         <table class="table table-striped table-responsive">
             <thead>
@@ -43,15 +52,6 @@ if ($media) {
             <?php endif;  ?>
             </tbody>
         </table>
-        <div>
-            <div class="col-md-8 float-start">
-                <input type="file" class="form-control" name="image">
-            </div>
-            <div class="col-md-4 float-end">
-
-                <input class="btn btn-primary float-end" type="submit" value="Upload" formaction="<?php echo $this->getUrlObject()->getUrl('save', 'productMedia', ['id' => $id]); ?>">
-            </div>
-        </div>
     </form>
     <a href="<?php echo $this->getUrlObject()->getUrl('grid', 'product'); ?>" name="back" id="back" class="btn btn-light my-4"><i class="fas fa-long-arrow-alt-left"></i> Back</a>
 

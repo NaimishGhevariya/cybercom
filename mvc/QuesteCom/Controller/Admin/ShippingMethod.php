@@ -21,6 +21,21 @@ class ShippingMethod extends \Controller\Core\Admin
         $this->toHtmlLayout();
     }
 
+    public function filterAction()
+    {
+        $data = $this->getRequest()->getPost('filter');
+
+        $this->getFilterObject()->setFilters($data);
+        $this->redirect('grid');
+    }
+
+    public function clearFilterAction()
+    {
+        $this->getFilterObject()->clearFilters('shippingmethod');
+        $this->redirect('grid');
+    }
+
+
     public function formAction()
     {
         $id = $this->getRequest()->getGet('id');
@@ -74,8 +89,6 @@ class ShippingMethod extends \Controller\Core\Admin
                     throw new \Exception("Record Not Found.");
                 }
             }
-            date_default_timezone_set("Asia/Calcutta");
-            $shippingMethod->createdDate = date("Y-m-d H:i:s");
             $shippingMethodData = $this->getRequest()->getPost('shippingMethod');
             $shippingMethod->setData($shippingMethodData);
             if ($shippingMethod->save()) {

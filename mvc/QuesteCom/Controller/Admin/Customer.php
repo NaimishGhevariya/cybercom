@@ -61,26 +61,6 @@ class Customer extends \Controller\Core\Admin
         }
     }
 
-    // public function saveAction()
-    // {
-    //     if (!$this->getRequest()->isPost()) {
-    //         throw new \Exception("Invalid Request.");
-    //     }
-    //     date_default_timezone_set("Asia/Calcutta");
-
-    //     $customer = \Mage::getBlock('Block\Admin\Customer\Edit');
-    //     $customer = $customer->getTableRow();
-    //     $customerId = $this->getRequest()->getGet('id');
-
-    //     if ($customerId) {
-    //         if (!$customer->getData()) {
-    //             throw new \Exception("No record found.");
-    //         }
-    //         $customer->updatedDate = date("Y-m-d H:i:s");
-    //     } else {
-    //         $customer->createdDate = date("Y-m-d H:i:s");
-    //     }
-    // }
     public function saveAction()
     {
         try {
@@ -95,7 +75,6 @@ class Customer extends \Controller\Core\Admin
                 }
             }
             $customerData = $this->getRequest()->getPost('customer');
-            date_default_timezone_set("Asia/Kolkata");
             $customer->createdDate = date('Y-m-d H:i:s');
             $customer->setData($customerData);
             if ($customer->save($id)) {
@@ -170,7 +149,6 @@ class Customer extends \Controller\Core\Admin
                 throw new \Exception("Id Required.");
             }
             $customer = \Mage::getModel("Model\Customer");
-            $customerData = $this->getRequest()->getPost('customer');
             $customer->load($id);
             if ($customer->delete($id)) {
                 $this->getMessage()->setSuccess("Record Deleted Successfully");

@@ -52,7 +52,7 @@ class Cms extends \Controller\Core\Admin
             $edit = \Mage::getBlock("Block\Admin\Cms\Edit");
             $edit->setController($this);
             $layout = $this->getLayout();
-            $content = $layout->getChild('content')->addChild($edit, 'edit');
+            $layout->getChild('content')->addChild($edit, 'edit');
             echo $layout->toHtml();
         } catch (\Exception $e) {
             echo $e->getMessage();
@@ -74,7 +74,6 @@ class Cms extends \Controller\Core\Admin
                     throw new \Exception("Record Not Found.");
                 }
             }
-            date_default_timezone_set("Asia/Calcutta");
             $cmsPage->createdDate = date("Y-m-d H:i:s");
             $cmsPageData = $this->getRequest()->getPost('cms');
             $cmsPage->setData($cmsPageData);
@@ -98,7 +97,6 @@ class Cms extends \Controller\Core\Admin
                 throw new \Exception("Id Required.");
             }
             $cmsPage = \Mage::getModel("Model\Cms");
-            $cmsPageData = $this->getRequest()->getPost('cmsPage');
             $cmsPage->load($id);
             if ($cmsPage->delete($id)) {
                 $this->getMessage()->setSuccess("Record Deleted Successfully");

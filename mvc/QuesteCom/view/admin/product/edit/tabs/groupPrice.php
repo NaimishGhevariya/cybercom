@@ -2,7 +2,7 @@
 $customerGroups = $this->getCustomerGroups()->getData();
 
 ?>
-<form method="POST" action="<?php echo $this->getUrlObject()->getUrl('save', 'Product\Group\Price', ['id' => $customerGroups[0]->productId], true); ?>">
+<form method="POST" action="<?php echo $this->getUrlObject()->getUrl('save', 'Product\Price', null, true); ?>">
 	<div class="col-md-12">
 		<a href="<?php echo $this->getUrlObject()->getUrl('grid', 'product'); ?>" name="back" id="back" class="btn btn-light float-start my-3"><i class="fas fa-long-arrow-alt-left"></i> Back</a>
 		<button class="btn btn-primary float-end my-3" type="submit">Update</button>

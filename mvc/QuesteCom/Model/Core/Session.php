@@ -7,7 +7,6 @@ class Session
 
 	protected $nameSpace = null;
 
-
 	public function __construct()
 	{
 		$this->nameSpace = "core";
@@ -24,7 +23,6 @@ class Session
 		$this->nameSpace = $nameSpace;
 		return $this;
 	}
-
 
 	public function start()
 	{
@@ -58,18 +56,25 @@ class Session
 
 	public function __get($key)
 	{
-		if (!array_key_exists($key, $_SESSION[$this->getNameSpace()])) {
-			return null;
+		if (is_array($_SESSION) && array_key_exists($this->getNameSpace(), $_SESSION)) {
+			if (!array_key_exists($key, $_SESSION[$this->getNameSpace()])) {
+				return null;
+			}
+			return $_SESSION[$this->getNameSpace()][$key];
 		}
-		return $_SESSION[$this->getNameSpace()][$key];
+		return null;
 	}
 
 
 	public function __unset($key)
 	{
-		if (array_key_exists($key, $_SESSION[$this->getNameSpace()])) {
-			unset($_SESSION[$this->getNameSpace()][$key]);
+		if (is_array($_SESSION[$this->getNameSpace()])) {
+
+			if (array_key_exists($key, $_SESSION[$this->getNameSpace()])) {
+				unset($_SESSION[$this->getNameSpace()][$key]);
+			}
+			return $this;
 		}
-		return $this;
+		return null;
 	}
 }

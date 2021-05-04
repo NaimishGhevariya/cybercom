@@ -36,7 +36,7 @@ class Url
             $actionName = $this->getRequest()->getGet('a');
         }
         if ($controllerName == NULL) {
-            $controllerName = $this->getRequest()->getGet('c');;
+            $controllerName = $this->getRequest()->getGet('c');
         }
         $final['c'] = $controllerName;
         $final['a'] = $actionName;

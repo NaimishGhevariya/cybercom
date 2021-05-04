@@ -1,0 +1,1 @@
+inside header_remove

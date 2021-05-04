@@ -7,7 +7,7 @@ $categoryOptions = $this->getCategoryOptions();
     <form method="POST" action="<?php echo $this->getUrlObject()->getUrl('save', null, null, true); ?>">
         <div class="row">
             <div class="col-md-5 m-3">
-                <label for="sku" class="form-label"><b>Parent Category</b></label>
+                <label class="form-label"><b>Parent Category</b></label>
                 <select class="select form-control" name="category[parentId]">
                     <?php if ($categoryOptions) : ?>
                         <?php foreach ($categoryOptions as $id => $categoryName) : ?>

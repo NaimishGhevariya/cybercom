@@ -22,7 +22,7 @@ class Media extends \Block\Core\Edit
         }
         if ($id = $this->getRequest()->getGet('id')) {
             $media = \Mage::getModel('Model\ProductMedia');
-            $query = "SELECT * FROM {$media->getTableName()} WHERE `productId` = {$id}";
+            $query = "SELECT * FROM `{$media->getTableName()}` WHERE `productId` = {$id}";
             $mediaData = $media->fetchAll($query);
             if ($mediaData) {
                 $this->media = $mediaData;

@@ -9,12 +9,12 @@ $result = $this->getOptions();
         ?>
     </h2>
 
-    <form action="<?php $this->getUrlObject()->getUrl('update') ?>" method="POST">
+    <form action="<?php echo $this->getUrlObject()->getUrl('saveOption', null, null, true) ?>" method="POST">
         <a href="<?php echo $this->getUrlObject()->getUrl('grid'); ?>" name="back" id="back" class="btn btn-light"><i class="fas fa-long-arrow-alt-left"></i> Back</a>
 
         <button type="button" class="btn btn-primary float-end" onclick="addRow()"><i class="fas fa-plus"></i> Add Option</button>
         <button type='submit' class="btn btn-primary float-end mx-3"><i class="fas fa-pen"></i> Update</button>
-        <table class="table table-striped table-hover">
+        <table class="table table-striped table-hover" id="existingOption">
             <thead>
                 <tr>
                     <th>#</th>
@@ -25,27 +25,45 @@ $result = $this->getOptions();
                 </tr>
             </thead>
             <tbody id="tbody">
-                <tr id='newRow' hidden>
-                    <td><?php echo "" ?></td>
+                <!-- <tr id='newRow' hidden>
+                    <td><?php //echo "" 
+                        ?></td>
                     <td><input type="text" value="<?php echo 1; ?>" disabled></td>
                     <td><input type="text" name="option['new'][name]"></td>
                     <td><input type="text" name="option['new'][sortOrder]"></td>
                     <td><a onclick="removeRow(this)"><i class="fas fa-trash-alt" style="color:tomato"></i></a></td>
-                </tr>
+                </tr> -->
                 <?php foreach ($result as $row) :
                 ?>
                     <tr>
                         <td><?php echo $row->optionId ?></td>
                         <td><input type="text" value="<?php echo $row->attributeId ?>" disabled></td>
-                        <td><input type="text" value="<?php echo $row->name ?>" name="option[<?php echo ($row->optionId) ? 'exist' : 'new'; ?>][name]"></td>
-                        <td><input type="text" value="<?php echo $row->sortOrder ?>" name="option[<?php echo ($row->optionId) ? 'exist' : 'new'; ?>][sortOrder]"></td>
+                        <td><input type="text" value="<?php echo $row->name ?>" name="option[exist][<?= $row->optionId ?>][name]"></td>
+                        <td><input type="text" value="<?php echo $row->sortOrder ?>" name="option[exist][<?= $row->optionId ?>][sortOrder]"></td>
                         <td><a <?php if ($row->optionId) : ?> href="<?php echo $this->getUrlObject()->getUrl('deleteOption', NULL, ['id' => "$row->optionId"], true); ?>" <?php else : ?> onclick="removeRow()" <?php endif; ?>><i class="fas fa-trash-alt" style="color:tomato"></i></a></td>
                     </tr>
                 <?php endforeach;
                 ?>
+
             </tbody>
         </table>
     </form>
 
 
+</div>
+
+<div style="display:none">
+    <table id="newOption" class="table table-striped table-hover">
+        <tbody>
+            <tr>
+                <td><input type="text" value="<?php echo '*'; ?>" disabled></td>
+                <td><input type="text" value="<?php if ($result) {
+                                                    echo $result[0]->attributeId;
+                                                } ?>" disabled></td>
+                <td><input type="text" name="option[new][name][]"></td>
+                <td><input type="text" name="option[new][sortOrder][]"></td>
+                <td><a onclick="removeRow(this)"><i class="fas fa-trash-alt" style="color:tomato"></i></a></td>
+            </tr>
+        </tbody>
+    </table>
 </div>

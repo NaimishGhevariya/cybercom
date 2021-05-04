@@ -68,6 +68,7 @@ class Category extends \Controller\Core\Admin
                 throw new \Exception("invalid Request");
             }
             $category = \Mage::getModel("Model\Category");
+
             if ((int)$id = $this->getRequest()->getGet("id")) {
                 $category = $category->load($id);
                 if (!$category) {
@@ -77,12 +78,18 @@ class Category extends \Controller\Core\Admin
 
             $categoryData = $this->getRequest()->getPost('category');
             $category->setData($categoryData);
-            $id = $category->save();
+            if (!$category->categoryId) {
+                $id = $category->save();
+                $category = $category->load($id);
+            } else {
+                $category->save();
+            }
 
             $categoryPath = $category->path;
             $category->updatePath();
-            $category->save();
+
             $category->updateChildrenPaths($categoryPath);
+
             $this->redirect('grid');
         } catch (\Exception $e) {
             echo $e->getMessage();
@@ -103,9 +110,8 @@ class Category extends \Controller\Core\Admin
 
             $path = $category->path;
             $parentId = $category->parentId;
-            $category->delete($id);
-            $category->updateChildrenPaths($path, $parentId);
             if ($category->delete($id)) {
+                $category->updateChildrenPaths($path, $parentId);
                 $this->getMessage()->setSuccess("Record Deleted Successfully");
             } else {
                 $this->getMessage()->setSuccess("Unable to Delete Record");

@@ -74,8 +74,6 @@ class PaymentMethod extends \Controller\Core\Admin
                     throw new \Exception("Record Not Found.");
                 }
             }
-            date_default_timezone_set("Asia/Calcutta");
-            $paymentMethod->createdDate = date("Y-m-d H:i:s");
             $paymentMethodData = $this->getRequest()->getPost('paymentMethod');
             $paymentMethod->setData($paymentMethodData);
             if ($paymentMethod->save()) {
@@ -98,7 +96,6 @@ class PaymentMethod extends \Controller\Core\Admin
                 throw new \Exception("Id Required.");
             }
             $paymentMethod = \Mage::getModel("Model\PaymentMethod");
-            $paymentMethodData = $this->getRequest()->getPost('paymentMethod');
             $paymentMethod->load($id);
             if ($paymentMethod->delete($id)) {
                 $this->getMessage()->setSuccess("Record Deleted Successfully");

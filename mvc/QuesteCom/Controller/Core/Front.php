@@ -7,7 +7,6 @@ class Front
 	public function init()
 	{
 		if (array_key_exists('c', $_GET) && array_key_exists('a', $_GET)) {
-
 			$controllerName = $_GET['c'];
 			$controllerName = "Controller\Admin\\" . ucfirst($_GET['c']);
 			$actionName = $_GET['a'];

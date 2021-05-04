@@ -74,7 +74,6 @@ class Admin extends \Controller\Core\Admin
                     throw new \Exception("Record Not Found.");
                 }
             }
-            date_default_timezone_set("Asia/Calcutta");
             $adminData = $this->getRequest()->getPost('admin');
             $admin->setData($adminData);
             if ($admin->save()) {
@@ -97,7 +96,6 @@ class Admin extends \Controller\Core\Admin
                 throw new \Exception("Id Required.");
             }
             $admin = \Mage::getModel("Model\Admin");
-            $adminData = $this->getRequest()->getPost('admin');
             $admin->load($id);
             if ($admin->delete($id)) {
                 $this->getMessage()->setSuccess("Record Deleted Successfully");

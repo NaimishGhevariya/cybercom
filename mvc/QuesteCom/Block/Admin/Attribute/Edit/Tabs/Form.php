@@ -26,7 +26,7 @@ class Form extends \Block\Core\Edit
     public function getBackendTypeOptions()
     {
         return [
-            'varchar' => 'Varchar',
+            'varchar(255)' => 'Varchar',
             'int' => 'Int',
             'decimal' => 'Decimal',
             'text' => 'Text'
@@ -38,7 +38,7 @@ class Form extends \Block\Core\Edit
         return [
             'text' => 'Text Box',
             'textarea' => 'Text Area',
-            'selsect' => 'Select',
+            'select' => 'Select',
             'checkbox' => 'Checkbox',
             'radio' => 'Radio'
         ];

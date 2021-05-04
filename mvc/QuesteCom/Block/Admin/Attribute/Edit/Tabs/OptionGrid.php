@@ -35,7 +35,6 @@ class OptionGrid extends \Block\Core\Edit
             $this->redirect('grid');
         }
     }
-
     public function getOptions()
     {
         $options = \Mage::getModel('Model\Attribute\Option');

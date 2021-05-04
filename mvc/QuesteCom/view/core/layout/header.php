@@ -16,6 +16,7 @@
         <a class="nav-link float-end" href="<?php echo $this->getUrlObject()->getUrl('grid', 'shippingmethod'); ?>"><i class="fas fa-shipping-fast"></i> Shipping</a>
         <a class="nav-link float-end" href="<?php echo $this->getUrlObject()->getUrl('grid', 'cms'); ?>"><i class="fas fa-file-code"></i> CMS</a>
         <a class="nav-link float-end" href="<?php echo $this->getUrlObject()->getUrl('grid', 'attribute'); ?>"><i class="fas fa-cubes"></i> Attribute</a>
+        <a class="nav-link float-end" href="<?php echo $this->getUrlObject()->getUrl('grid', 'cart'); ?>"><i class="fas fa-shopping-cart"></i> Cart</a>
         <a class="nav-link float-end" href="<?php echo $this->getUrlObject()->getUrl('grid', 'admin'); ?>"><i class="fas fa-user-shield"></i> Admin</a>
       </div>
     </div>

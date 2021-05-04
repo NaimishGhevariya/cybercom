@@ -1,5 +1,6 @@
 <?php
 $product = $this->getTableRow();
+$categoryOptions = $this->getCategoryOptions();
 
 ?>
 <div class="container">
@@ -15,7 +16,6 @@ $product = $this->getTableRow();
             </div>
         </div>
         <div class="row">
-
             <div class="col-md-5 m-3">
                 <label for="price" class="form-label"><b>Price</b></label>
                 <input type="text" class="form-control" name="product[price]" id="price" placeholder="Price" value="<?php echo $product->price; ?>">
@@ -38,10 +38,20 @@ $product = $this->getTableRow();
         </div>
         <div class="row">
 
-            <input type="text" name="product[updatedDate]" value="<?php date_default_timezone_set("Asia/Kolkata");
-                                                                    echo date('Y-m-d H:i:s') ?>" hidden>
+
             <div class="col-md-5 m-3">
-                <label for="status" class="form-label"><b>Status</b></label>
+                <label class="form-label"><b>Category</b></label>
+                <select class="form-select" name="product[categoryId]">
+                    <?php if ($categoryOptions) : ?>
+                        <option class="form-control" value="0" selected disabled> Select category</option>
+                        <?php foreach ($categoryOptions as $id => $categoryName) : ?>
+                            <option class="form-control" value="<?php echo $id; ?>" <?php if ($product->categoryId == $id) echo "selected"; ?>> <?php echo $categoryName; ?></option>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </select>
+            </div>
+            <div class="col-md-5 m-3">
+                <label for="status" class="form-label"><b>status</b></label>
                 <select class="custom-select form-control" name="product[status]">
                     <?php
                     foreach ($product->getStatusOptions() as $key => $value) { ?>
@@ -51,6 +61,12 @@ $product = $this->getTableRow();
                     <?php } ?>
                 </select>
             </div>
+        </div>
+        <div class="row">
+
+            <input type="text" name="product[updatedDate]" value="<?php date_default_timezone_set("Asia/Kolkata");
+                                                                    echo date('Y-m-d H:i:s') ?>" hidden>
+
         </div>
         <a href="<?php echo $this->getUrlObject()->getUrl('grid'); ?>" name="back" id="back" class="btn btn-light"><i class="fas fa-long-arrow-alt-left"></i> Back</a>
         <button name="submit" id="submit" class="btn btn-primary m-3"><i class="fas fa-plus"></i> <?php echo $this->getButton(); ?></button>

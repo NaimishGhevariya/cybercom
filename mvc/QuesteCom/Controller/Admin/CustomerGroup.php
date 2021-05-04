@@ -74,8 +74,6 @@ class CustomerGroup extends \Controller\Core\Admin
                     throw new \Exception("Record Not Found.");
                 }
             }
-            date_default_timezone_set("Asia/Calcutta");
-            $customerGroup->createdDate = date("Y-m-d H:i:s");
             $customerGroupData = $this->getRequest()->getPost('customerGroup');
             $customerGroup->setData($customerGroupData);
             if ($customerGroup->save()) {
@@ -98,7 +96,6 @@ class CustomerGroup extends \Controller\Core\Admin
                 throw new \Exception("Id Required.");
             }
             $customerGroup = \Mage::getModel("Model\CustomerGroup");
-            $customerGroupData = $this->getRequest()->getPost('customerGroup');
             $customerGroup->load($id);
             if ($customerGroup->delete($id)) {
                 $this->getMessage()->setSuccess("Record Deleted Successfully");

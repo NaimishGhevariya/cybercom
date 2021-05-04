@@ -1,6 +1,6 @@
 <?php
 $customer = $this->getTableRow();
-
+$getCustomerGroupOptions = $this->getCustomerGroupOptions();
 ?>
 <div class="container">
 
@@ -29,8 +29,14 @@ $customer = $this->getTableRow();
 
         <div class="row">
             <div class="col-md-5 m-3">
-                <label for="mobile" class="form-label"><b>Mobile No.</b></label>
-                <input type="number" class="form-control" name="customer[mobile]" id="mobile" placeholder="mobile" value="<?php echo $customer->mobile; ?>">
+                <label for="customerGroup" class="form-label"><b>Customer Group</b></label>
+                <select class="form-select" name="customer[customerGroupId]">
+                    <?php foreach ($getCustomerGroupOptions as $key => $value) { ?>
+                        <option class="form-control" value="<?php echo $key; ?>" <?php if ($customer->customerGroupId == $key) echo "selected"; ?>>
+                            <?php echo $value; ?>
+                        </option>
+                    <?php } ?>
+                </select>
             </div>
             <div class="col-md-5 m-3">
                 <label for="status" class="form-label"><b>Status</b></label>
@@ -41,6 +47,12 @@ $customer = $this->getTableRow();
                         </option>
                     <?php } ?>
                 </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5 m-3">
+                <label for="mobile" class="form-label"><b>Mobile No.</b></label>
+                <input type="number" class="form-control" name="customer[mobile]" id="mobile" placeholder="mobile" value="<?php echo $customer->mobile; ?>">
             </div>
         </div>
         <input type="text" name="customer[updatedDate]" value="<?php date_default_timezone_set("Asia/Kolkata");

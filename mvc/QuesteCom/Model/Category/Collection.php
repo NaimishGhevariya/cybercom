@@ -13,9 +13,12 @@ class Collection
 		return $this;
 	}
 
-	public function getData()
+	public function getData($key = null)
 	{
-		return $this->data;
+		if (!$key) {
+			return $this->data;
+		}
+		return $this->data[$key];
 	}
 
 	public function count()

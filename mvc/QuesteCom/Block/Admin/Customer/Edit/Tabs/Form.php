@@ -52,4 +52,12 @@ class Form extends \Block\Core\Edit
 			echo 'Add';
 		}
 	}
+
+	public function getCustomerGroupOptions()
+	{
+		$customerGroup = \Mage::getModel('Model\CustomerGroup');
+		$query = "SELECT `customerGroupId`, `name`
+		FROM `{$customerGroup->getTableName()}`";
+		return $customerGroup->getAdapter()->fetchPairs($query);
+	}
 }

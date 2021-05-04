@@ -28,12 +28,33 @@ class Form extends \Block\Core\Edit
 	public function getCategoryOptions()
 	{
 		if (!$this->categoryOptions) {
-			$query = "SELECT `categoryId`,`name` FROM `{$this->getTableRow()->getTableName()}`";
-			$this->categoryOptions = $this->getTableRow()->getAdapter()->fetchPairs($query);
+			$categoryModel = $this->getTableRow();
+			$query = "SELECT `categoryId`,`name` 
+			FROM `{$this->getTableRow()->getTableName()}` 
+			ORDER BY `path`";
+			$categoryOptions = $categoryModel->getAdapter()->fetchPairs($query);
+			$categoryId = $categoryModel->getData('categoryId');
+
+			$categoryModel->load($categoryId);
+			$query = "SELECT `categoryId`,`path` 
+			FROM `{$this->getTableRow()->getTableName()}` 
+			WHERE `categoryId` != '{$categoryModel->categoryId}' AND `path` NOT LIKE '{$categoryModel->path}=%' 
+			ORDER BY `path`";
+			$this->categoryOptions = $categoryModel->getAdapter()->fetchPairs($query);
+			if ($this->categoryOptions) {
+				foreach ($this->categoryOptions as $categoryId => &$path) {
+					$path = explode('=', $path);
+					foreach ($path as $key => &$id) {
+						if (array_key_exists($id, $categoryOptions)) {
+							$id = $categoryOptions[$id];
+						}
+					}
+					$path = implode(' / ', $path);
+				}
+			}
 
 			$this->categoryOptions = ["0" => "Root Category"] + $this->categoryOptions;
+			return $this->categoryOptions;
 		}
-
-		return $this->categoryOptions;
 	}
 }

@@ -4,6 +4,7 @@ namespace Controller\Core;
 
 \Mage::loadFileByClassName("Model\Core\Request");
 \Mage::loadFileByClassName("Model\Core\Message");
+\Mage::loadFileByClassName("Model\Core\Filter");
 \Mage::loadFileByClassName("Block\Core\Layout");
 
 class Admin
@@ -12,6 +13,7 @@ class Admin
     protected $request = Null;
     protected $layout = null;
     protected $message = null;
+    protected $filters = null;
 
     public function __construct()
     {
@@ -97,5 +99,35 @@ class Admin
             $this->setMessage();
         }
         return $this->message;
+    }
+
+    public function setFilterObject(\Model\Admin\Filter $filter = null)
+    {
+        if (!$filter) {
+            $filter = \Mage::getModel('Model\Admin\Filter');
+        }
+        $this->filters = $filter;
+        return $this;
+    }
+
+    public function getFilterObject()
+    {
+        if (!$this->filters) {
+            $this->setFilterObject();
+        }
+        return $this->filters;
+    }
+
+    public function filterAction()
+    {
+        $data = $this->getRequest()->getPost('filter');
+        $this->getFilterObject()->setFilters($data);
+        $this->redirect('grid');
+    }
+
+    public function clearFilterAction()
+    {
+        $this->getFilterObject()->clearFilters();
+        $this->redirect('grid');
     }
 }

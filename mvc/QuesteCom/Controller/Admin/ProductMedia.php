@@ -63,9 +63,7 @@ class ProductMedia extends \Controller\Core\Admin
 
 		foreach ($data['data'] as $key => $value) {
 			$productMedia->load($key);
-			$productMedia->small = 0;
-			$productMedia->thumb = 0;
-			$productMedia->base = 0;
+
 			$productMedia->gallery = 0;
 			$productMedia->setData($value);
 			$productMedia->save();
@@ -73,10 +71,14 @@ class ProductMedia extends \Controller\Core\Admin
 		foreach ($data as $key => $value) {
 			if ($key != 'data') {
 				$productMedia->load($value);
+				$productMedia->small = 0;
+				$productMedia->thumb = 0;
+				$productMedia->base = 0;
 				$productMedia->$key = 1;
 				$productMedia->save();
 			}
 		}
+
 
 		$this->getMessage()->setSuccess("File Updated Successfully");
 		$this->redirect('form', 'product', ['tab' => 'media'], true);
